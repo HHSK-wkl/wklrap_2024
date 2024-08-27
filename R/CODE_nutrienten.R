@@ -6,7 +6,7 @@ library(glue)
 library(colorspace)
 library(scales)
 
-rap_jaar <- 2023
+rap_jaar <- 2024
 
 fys_chem <- readRDS("data/fys_chem.rds") %>% HHSKwkl::add_jaar()
 meetpunten <- HHSKwkl::import_meetpunten()

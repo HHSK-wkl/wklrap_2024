@@ -1,6 +1,6 @@
 ---
 params: 
-  rap_jaar: 2023
+  rap_jaar: 2024
 lightbox: false
 # abstract-title: "Introductie"
 # abstract: "TESt"

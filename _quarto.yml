@@ -3,7 +3,7 @@ project:
   post-render: 
    - "R/post_render_zwem_icons.R"
 book:
-  title: "Rapportage waterkwaliteit 2023 - HHSK"
+  title: "Rapportage waterkwaliteit 2024 - HHSK"
   # cover-image: "images/zomer_veenweide_full_colour_800px.jpg"
   sidebar: 
     logo: "images/logo_hhsk.png"

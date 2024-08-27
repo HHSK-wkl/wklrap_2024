@@ -768,11 +768,24 @@ parnr;par;parnaamlang;cluster;eenheid;wns;aquo_parcode;aquo_eenheid;aquo_hoedani
 444;PSEUDA [cel];Pseudanabaena;Blauwalgen;n/ml;WNS13211;PSEUDA;n/ml;cel;OW;NVT;;AANTPVLME
 445;sANNADOLIC [cel];som Anabaena en Dolichospermum;Blauwalgen;n/ml;WNS13209;sANNADOLIC1;n/ml;cel;OW;NVT;;AANTPVLME
 454;THAUMTPPCSNA;Thaumetopoea processionea (eikenprocessierups) aangetroffen;Zwemmersjeuk;DIMSLS;WNS12460;THAUMTPPCSNA;DIMSLS;DNAKPN;OW; ;;AANWZHD
+1359;emmtn;emamectin;Bestrijdingsmiddelen;ug/l;WNS8182;emmtn;ug/l;NVT;OW;119791-41-2;;CONCTTE
+1360;irgrl;irgarol;Bestrijdingsmiddelen;ug/l;WNS5803;irgrl;ug/l;NVT;OW;28159-98-0;;CONCTTE
+1361;quinoxfn;quinoxyfen;Bestrijdingsmiddelen;ug/l;WNS5149;quinoxfn;ug/l;NVT;OW;124495-18-7;;CONCTTE
+1362;spirxmne;spiroxamine;Bestrijdingsmiddelen;ug/l;WNS5889;spirxmne;ug/l;NVT;OW;118134-30-8;;CONCTTE
+1363;TbnrC1y;tribenuronmethyl;Bestrijdingsmiddelen;ug/l;WNS9415;TbnrC1y;ug/l;NVT;OW;101200-48-0;;CONCTTE
+1364;TClfn;trichloorfon;Bestrijdingsmiddelen;ug/l;WNS4293;TClfn;ug/l;NVT;OW;52-68-6;;CONCTTE
+2165;TFyPO4;trifenylfosfaat;Organisch;ug/l;WNS6614;TFyPO4;ug/l;NVT;OW;115-86-6;;CONCTTE
+2499;PEQ [BER];som PFOA-equivalenten (berekend);PFAS;ng/l; ; ;ng/l;NVT;OW; ;;CONCTTE
 2413;slinvertPFOS;som lineair en vertakte perfluoroctylsulfonaat;PFAS;ng/l;WNS13215;slinvertPFOS;ng/l;NVT;OW; ;;CONCTTE
 9901;DmtAd DmtnmdP;dimethenamide als dimethenamid-P;Niet gebruiken;ug/l;WNS5732; ; ; ;OW; ;;CONCTTE
 9902;metlCl SmtlCl;metolachloor als S-metolachloor;Niet gebruiken;ug/l;WNS5886; ; ; ;OW; ;;CONCTTE
 508;IONBLS;Ionenbalans;Berekend;%;WNS10496; ;%;NVT;OW; ;;IONBLS
 1355;milbmcA4;milbemycin A4;Bestrijdingsmiddelen;ug/l;WNS11472;milbmcA4;ug/l;NVT;OW;51596-11-3;;CONCTTE
+2435;H-PFC12asfzr;1H,1H,2H,2H-perfluordodecaansulfonzuur (10:2 FTS);PFAS;ng/l;WNS13730;H-PFC12asfzr;ng/l;NVT;OW;120226-60-0;;CONCTTE
+1357;nebrn;neburon;Bestrijdingsmiddelen;ug/l;WNS9507;nebrn;ug/l;NVT;OW;555-37-3;;CONCTTE
+1358;spintrm;spinetoram (mix);Bestrijdingsmiddelen;ug/l;WNS13137;spintrm;ug/l;NVT;OW;935545-74-7;;CONCTTE
+9903;DClpp DClppP;dichloorprop als dichloorprop-P;Niet gebruiken;ug/l;WNS5718; ;ug/l;NVT;OW; ;;CONCTTE
+9904;mecpp mecppP;mecoprop als mecoprop-P;Niet gebruiken;ug/l;WNS5814; ;ug/l;NVT;OW; ;;CONCTTE
 1356;smilbmcn;som milbemycin A3 + A4;Bestrijdingsmiddelen;ug/l;WNS13409;smilbmcn;ug/l;NVT;OW; ;;CONCTTE
 2414;11ClPF3OUdS;11-chlooreicosafluor-3-oxaundecaan-1-sulfonzuur;PFAS;ng/l;WNS13545;11ClPF3OUdS;ng/l;NVT;OW;763051-92-9;;CONCTTE
 2415;9-Cl-PF3ONS;9-chloorhexadecaanfluor-3-oxanon-1-sulfonzuur;PFAS;ng/l;WNS13544;9-Cl-PF3ONS;ng/l;NVT;OW;756426-58-1;;CONCTTE
