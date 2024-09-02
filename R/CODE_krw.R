@@ -11,7 +11,7 @@ library(readxl)
 
 ## ---- parameters ----
 
-rap_jaar <- 2023
+rap_jaar <- 2024
 
 ## ---- prep-krw ----
 
@@ -42,7 +42,7 @@ f_krw_omsch <-
   ) %>% maak_opzoeker()
 
 krw_data <-
-  readxl::read_excel("data/waterlichamen_ekrs_en_doelen_2023.xlsx") %>%
+  readxl::read_excel("data/waterlichamen_ekrs_en_doelen_2024.xlsx") %>%
   mutate(type = fct_relevel(type, c("Algen", "Waterplanten", "Macrofauna", "Vis")),
          groep = fct_relevel(groep, "Boezem", "Plassen", "Sloten", "Kanalen Krimpenerwaard", "Kanalen Schieland")) %>% 
   arrange(nr, type)
