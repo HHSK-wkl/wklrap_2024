@@ -1,5 +1,7 @@
 # source("R/CODE_index_setup.R")
 
+# Setup -------------------------------------------------------------------
+
 library(tidyverse)
 library(HHSKwkl)
 library(glue)
@@ -14,8 +16,6 @@ parameters <- HHSKwkl::import_parameters()
 
 theme_set(hhskthema())
 
-## ---- nutrienten-1 ----
-
 landgebruik_sel <- c("glastuinbouw", "grasland - agrarisch", "grasland - natuur",
                      "stedelijk", "boezem", "grote plassen", "akkerbouw")
 mp_sel <-
@@ -27,7 +27,7 @@ mp_sel <-
 
 grafiek_data <-
   fys_chem %>%
-  filter(jaar >= rap_jaar-10,
+  filter(jaar >= rap_jaar - 10,
          jaar <= rap_jaar,
          parnr %in% c(3, 7)) %>%
   inner_join(mp_sel, by = "mp") %>%
@@ -60,6 +60,8 @@ kleuren_functies_nutrienten <-
     "Grasland"             = RColorBrewer::brewer.pal(12, "Set3")[7])
 
 
+# Nutriënten plot ----------------------------------------------------------
+
 
 nutrienten_plot <-
   grafiek_data %>%
@@ -90,6 +92,11 @@ kleuren_functies_lijnen <-
   darken(amount = 0.3, space = "combined", method = "absolute") %>%
   set_names(str_to_lower(names(kleuren_functies_nutrienten)))
 
+
+# Fosfor plot --------------------------------------------------------------
+
+
+
 fosfor_plot <-
   grafiek_data %>%
   filter(parnr == 3) %>%
@@ -110,6 +117,10 @@ fosfor_plot <-
   coord_cartesian(clip = "off") +
   theme(plot.margin = margin(5.5, 90, 5.5, 5.5, unit = "pt")) +
   NULL
+
+
+# Stikstof plot -----------------------------------------------------------
+
 
 stikstof_plot <-
   grafiek_data %>%
@@ -132,72 +143,11 @@ stikstof_plot <-
   theme(plot.margin = margin(5.5, 90, 5.5, 5.5, unit = "pt")) +
   NULL
 
-# NIET MEER OPNEMEN ???
-
-# trends <- grafiek_data %>%
-#   arrange(parnr, landgebruik, jaar) %>%
-#   group_by(parnr, landgebruik) %>%
-#   nest() %>%
-#   mutate(test = map(data, ~trend::mk.test(.$waarde_gem)),
-#          `p-waarde` = map_dbl(test, ~round(.$p.value, digits = 3)),
-#          richting = map_dbl(test, ~sign(.$statistic))) %>%
-#   ungroup() %>%
-#   mutate(Trend = case_when(
-#     `p-waarde` > 0.05 ~ "- geen trend",
-#     `p-waarde` < 0.05 & richting == -1 ~ '- <span style="color:#0079C2;font-weight:normal;">dalende trend</span>',
-#     `p-waarde` < 0.05 & richting == 1 ~ '- <span style="color:#C25100; font-weight:normal;">stijgende trend</span>'
-#   ))
-#
-# grafiek_data2 <-
-#   grafiek_data %>%
-#   mutate(kleur = kleuren_functies_nutrienten[as.character(landgebruik)]) %>%
-#   left_join(trends, by = c("landgebruik", "parnr")) %>%
-#   mutate(landgebruik = glue("{landgebruik} {Trend}"))
-#
-# fosfor_plot <-
-#   grafiek_data2 %>%
-#   filter(parnr == 3) %>%
-#   mutate(landgebruik = fct_reorder(landgebruik, waarde_gem, .desc = TRUE)) %>%
-#   ggplot(aes(as.factor(jaar), waarde_gem, fill = kleur, text = tekst)) +
-#   geom_col(width = 0.8, colour = "grey60") +
-#   facet_wrap(~landgebruik, ncol = 2, scales = "free") +
-#   scale_y_continuous(limits = c(0,NA), expand = expansion(c(0,0.1))) +
-#   labs(title = "Gemiddelde fosfaatconcentratie",
-#        x = "",
-#        y = "mg P/l",
-#        caption = "N.B. De schaal van de Y-as verschilt per figuur.") +
-#   thema_line_facet +
-#   scale_fill_identity() +
-#   # scale_fill_manual(values = c(hhskblauw, "grey60"), labels = c(rap_jaar, "Andere jaren"), ) +
-#   theme(legend.position = "none",
-#         panel.spacing = unit(25, "points"),
-#         axis.ticks.x = element_blank(),
-#         strip.text = element_markdown())
-#
-#
-# stikstof_plot <-
-#   grafiek_data2 %>%
-#   filter(parnr == 7) %>%
-#   mutate(landgebruik = fct_reorder(landgebruik, waarde_gem, .desc = TRUE)) %>%
-#   ggplot(aes(as.factor(jaar), waarde_gem, fill = kleur, text = tekst)) +
-#   geom_col(width = 0.8, colour = "grey60") +
-#   facet_wrap(~landgebruik, ncol = 2, scales = "free") +
-#   scale_y_continuous(limits = c(0, NA), expand = expansion(c(0,0.1))) +
-#   labs(title = "Gemiddelde stikstofconcentratie",
-#        x = "",
-#        y = "mg N/l",
-#        caption = "N.B. De schaal van de Y-as verschilt per figuur.") +
-#   thema_line_facet +
-#   scale_fill_identity() +
-#   # scale_fill_manual(values = c(hhskblauw, "grey60"), labels = c(rap_jaar, "Andere jaren"), ) +
-#   theme(legend.position = "none",
-#         panel.spacing = unit(25, "points"),
-#         axis.ticks.x = element_blank(),
-#         strip.text = element_markdown())
-
-
 
 # Berekening trend en verandering -----------------------------------------
+
+# Deze code wordt niet direct opgenomen in de rapportage maar wordt gebruikt in de voetnoten van de tekst 
+# om aan te geven of significante veranderingen zijn en hoe groot deze zijn
 
 library(trend)
 
