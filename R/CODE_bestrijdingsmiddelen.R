@@ -12,7 +12,7 @@ library(ggtext)
 library(plotly)
 library(leaflet)
 
-rap_jaar <- 2023
+rap_jaar <- 2024
 
 fys_chem <- readRDS("data/fys_chem.rds") %>% HHSKwkl::add_jaar()
 meetpunten <- HHSKwkl::import_meetpunten()
@@ -64,13 +64,15 @@ mspaf <- function(paf_vector){
   1 - prod(1 - paf_vector, na.rm = TRUE)
 }
 
-reverselog_trans <- function(base = 10, n = 5) {
-  trans <- function(x) -log(x, base)
-  inv <- function(x) base^(-x)
-  scales::trans_new(paste0("reverselog-", format(base)), trans, inv,
-                    scales::log_breaks(n = n, base = base),
-                    domain = c(1e-100, Inf))
-}
+# direct aangepast in scale_y_continuous maakt de functie overbodig. De functie werkt ook niet correct meer.
+# reverselog_trans <- function(base = 10, n = 5) {
+#   trans <- function(x) -log(x, base)
+#   inv <- function(x) base^(-x)
+#   scales::trans_new(paste0("reverselog-", format(base)), trans, inv,
+#                     scales::log_breaks(n = n, base = base),
+#                     domain = c(1e-100, Inf))
+# }
+
 
 meer_of_minder <- function(waarde) {
   if (sign(waarde) == -1) tekst <- blauwe_tekst(paste(-waarde, "minder"), 20)
@@ -302,10 +304,10 @@ plot_mspaf_tijd <-
   filter(mspaf_i < 100000) %>%
   ggplot(aes(jaar2, mspaf_i)) +
   ggbeeswarm::geom_quasirandom(width = 0.3, colour = "grey30") +
-  scale_y_continuous(trans = reverselog_trans(n = 8),
+  scale_y_continuous(trans = c("log10", "reverse"), breaks = breaks_log(n = 8), 
                      labels = scales::label_number(prefix = "1 op de ", big.mark = ".", accuracy = 1),
-                     sec.axis = sec_axis(trans = ~ 1 / ., name = "msPAF acuut",
-                                         labels = function(x) scales::percent(x, decimal.mark = ",", accuracy = 0.01))) +
+                     sec.axis = sec_axis(trans = ~ 1 / ., name = "msPAF acuut", breaks = breaks_log(n = 8),
+                                         labels = function(x) scales::percent(x, decimal.mark = ",", accuracy = 0.001))) +
   # scale_x_continuous(breaks = scales::pretty_breaks(n = 14)) +
   geom_hline(yintercept = c(10, 200), colour = oranje, linetype = c(1,2)) +
   labs(title = "Welk deel van de soorten wordt aangetast?",
@@ -328,10 +330,10 @@ plot_mspaf_tijd_chronisch <-
   filter(mspaf_i < 100000) %>%
   ggplot(aes(jaar2, mspaf_i)) +
   ggbeeswarm::geom_quasirandom(width = 0.3, colour = "grey30") +
-  scale_y_continuous(trans = reverselog_trans(n = 8),
+  scale_y_continuous(trans = c("log10", "reverse"), breaks = breaks_log(n = 8), 
                      labels = scales::label_number(prefix = "1 op de ", big.mark = ".", accuracy = 1),
-                     sec.axis = sec_axis(trans = ~ 1 / ., name = "msPAF chronisch",
-                                         labels = function(x) scales::percent(x, decimal.mark = ",", accuracy = 0.01))) +
+                     sec.axis = sec_axis(trans = ~ 1 / ., name = "msPAF chronisch", breaks = breaks_log(n = 8),
+                                         labels = function(x) scales::percent(x, decimal.mark = ",", accuracy = 0.001))) +
   # scale_x_continuous(breaks = scales::pretty_breaks(n = 14)) +
   geom_hline(yintercept = c(20, 200), colour = oranje, linetype = c(1,2)) +
   labs(title = "Welk deel van de soorten wordt aangetast?",
