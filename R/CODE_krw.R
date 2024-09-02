@@ -2,6 +2,9 @@
 
 # LETOP overal de beoordeling vervangen voor het juiste jaar
 
+# Setup  ------------------------------------------------------------------
+
+
 library(HHSKwkl)
 library(tidyverse)
 library(glue)
@@ -9,22 +12,12 @@ library(sf)
 library(leaflet)
 library(readxl)
 
-## ---- parameters ----
-
 rap_jaar <- 2024
-
-## ---- prep-krw ----
 
 # INFORMATIE OVER WATERLICHAAM TOVOEGEN AAN POPUP
 
 waterlichamen <- st_read("data/waterlichamen.gpkg", quiet = TRUE) %>% 
   rename(naam = OWMNAAM, nr = OWMIDENT) #%>% 
-  # mutate(naam = case_when(
-  #   naam == "Eendragtspolder_roeibaan" ~ "Eendragtspolder",
-  #   naam == "Den Hoek en Schuwacht" ~ "Den Hoek en Schuwagt",
-  #   TRUE ~ naam
-  #   
-  # ))
 
 ws_grens <- st_read("data/ws_grens.gpkg", quiet = TRUE) %>% st_transform(crs = 4326)
 
@@ -147,8 +140,6 @@ krw_opgave <-
         legend.position = "top",
         plot.title.position = "plot") +
   guides(fill = guide_legend(title = "", reverse = TRUE))
-
-
 
 
 # Overig water ------------------------------------------------------------
