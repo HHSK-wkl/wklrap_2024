@@ -3,12 +3,12 @@ library(readxl)
 library(HHSKwkl)
 
 doelen <-
-  readxl::read_excel("data/waterlichamen_ekrs_en_doelen_2022.xlsx") %>% 
-  select(type, naam = OWMNAAM, doelen, groep)
+  readxl::read_excel("data/waterlichamen_ekrs_en_doelen_2023.xlsx") %>% 
+  select(type, naam, doelen, groep)
 
 
 ekrs <- 
-  read_excel("data/overzicht ekr nieuwe toetsing 2023 v24-7-2023.xlsx") %>% 
+  read_excel("data/overzicht ekr nieuwe toetsing 2024 v02-09-2024.xlsx") %>% 
   pivot_longer(cols = starts_with("20"), names_to = "jaar", values_to = "ekr", values_drop_na = TRUE) %>% 
   rename_all(str_to_lower) %>%
   mutate(jaar = as.numeric(jaar)) %>% 
@@ -21,4 +21,4 @@ ekrs <-
   select(type, nr, naam, watertype, jaar, ekr = ekr3, doelen, groep)
 
 ekrs %>% 
-  openxlsx::write.xlsx("data/waterlichamen_ekrs_en_doelen_2023.xlsx")
+  openxlsx::write.xlsx("data/waterlichamen_ekrs_en_doelen_2024.xlsx")
