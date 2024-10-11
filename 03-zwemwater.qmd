@@ -14,7 +14,7 @@ description: "Dit gaat over zwemwater"
 
 ::: samenvatting
 |                                          |                                                                                                                            |
-|---|------------------------------------------------------------|
+|----------------|--------------------------------------------------------|
 | [{{< fa circle-check >}}]{.blauw}        | De bacteriologische zwemwaterkwaliteit is overal goed of uitstekend en voldoet aan de normen uit de EU Zwemwaterrichtlijn. |
 | [{{< fa circle-arrow-up >}}]{.oranje}    | In 2023 waren er meer dagen met een waarschuwing voor blauwalgen dan in de voorgaande drie jaar.                           |
 | [{{< fa circle-exclamation >}}]{.oranje} | Op 4 zwemlocaties hadden mensen in 2023 last van jeukklachten.                                                             |
@@ -29,27 +29,31 @@ description: "Dit gaat over zwemwater"
 
 ### Introductie {.unnumbered}
 
+**Beoordeling bact moet nog worden bijgewerkt**
+
+**Laten zien dat als je alleen naar neg zwemadvies kijkt dat er dan wel verbetering is**
+
 Zwemmen is een belangrijke recreatieve functie van oppervlaktewater. In het gebied van het waterschap zijn acht plekken door de provincie aangewezen als officiële locatie om te zwemmen. Om veilig te kunnen zwemmen is het van belang dat de kwaliteit van het zwemwater goed is. De kwaliteit van het zwemwater wordt onderzocht door het waterschap.
 
-Tijdens het zwemseizoen (mei - september) wordt elke zwemlocatie om de twee weken onderzocht. Bij dit onderzoek wordt gecontroleerd op de aanwezigheid van fecale bacteriën[^04-zwemwater-1] en blauwalgen. Fecale bacteriën zijn potentiële ziekteverwekkers, en veel soorten blauwalgen zijn giftig. Als er veel bacteriën of blauwalgen in het zwemwater aanwezig zijn dan wordt hiervoor gewaarschuwd met een bord op de zwemlocatie en op [www.zwemwater.nl](https://www.zwemwater.nl){target="_blank"}.
+Tijdens het zwemseizoen (mei - september) wordt elke zwemlocatie om de twee weken onderzocht. Bij dit onderzoek wordt gecontroleerd op de aanwezigheid van poepbacteriën[^03-zwemwater-1] en blauwalgen. Poepbacteriën zijn potentiële ziekteverwekkers, en veel soorten blauwalgen zijn giftig. Als er veel bacteriën of blauwalgen in het zwemwater aanwezig zijn dan wordt hiervoor gewaarschuwd met een bord op de zwemlocatie en op [www.zwemwater.nl](https://www.zwemwater.nl){target="_blank"}.
 
-[^04-zwemwater-1]: Dit zijn bacteriën die afkomstig zijn uit de uitwerpselen van mens en dier.
+[^03-zwemwater-1]: Dit zijn bacteriën die afkomstig zijn uit de uitwerpselen van mens en dier.
 
 ::: aside
 ![Voorbeeld van een informatiebord bij zwemwater](images/infobord_zwemwater.png)
 :::
 
-Soms is er aanleiding om naast onderzoek naar bacteriën en blauwalgen onderzoek te doen naar andere risico's. In 2023 is er naar aanleiding van jeukklachten op enkele locaties onderzoek gedaan naar de aanwezigheid van zwemmersjeuk. Ook is er in alle zwemwateren onderzoek gedaan naar de aanwezigheid van PFAS.
+Soms is er aanleiding om naast onderzoek naar bacteriën en blauwalgen onderzoek te doen naar andere risico's. In 2024 is er naar aanleiding van jeukklachten op enkele locaties onderzoek gedaan naar de aanwezigheid van zwemmersjeuk. Ook is er in alle zwemwateren onderzoek gedaan naar de aanwezigheid van PFAS.
 
 De verschillende aspecten van zwemwaterkwaliteit worden hieronder verder toegelicht.
 
 ### Bacteriologische kwaliteit {.unnumbered}
 
-Bacteriën in het zwemwater kunnen ziektes veroorzaken. Daarom wordt de bacteriologische kwaliteit onderzocht en beoordeeld. De beoordeling gebeurt volgens de Europese Zwemwaterrichtlijn. De richtlijn schrijft voor dat het zwemwater minimaal moet voldoen aan de klasse aanvaardbaar. Het streven is om overal aan de klasse goed of uitstekend te voldoen. Bij een goede of uitstekende kwaliteit is het risico van bacteriën voor de gezondheid van zwemmers klein.
+Poepbacteriën in het zwemwater kunnen ziektes veroorzaken. Daarom wordt de bacteriologische kwaliteit onderzocht en beoordeeld. De beoordeling gebeurt volgens de Europese Zwemwaterrichtlijn. De richtlijn schrijft voor dat het zwemwater minimaal moet voldoen aan de klasse aanvaardbaar. Het streven is om overal aan de klasse goed of uitstekend te voldoen. Bij een goede of uitstekende kwaliteit is het risico van bacteriën voor de gezondheid van zwemmers klein.
 
-Op de onderstaande kaart (@fig-kaart-zwemlocaties) is de ligging van de verschillende zwemlocaties te zien. De kleuren geven de kwaliteit weer. Op alle zwemlocaties is de bacteriologische kwaliteit *goed* of *uitstekend*. De kwaliteit is getoetst over de periode `r rap_jaar-3`-`r rap_jaar`.
+**Op de onderstaande kaart (@fig-kaart-zwemlocaties) is de ligging van de verschillende zwemlocaties te zien. De kleuren geven de kwaliteit weer. Op alle zwemlocaties is de bacteriologische kwaliteit *goed* of *uitstekend*. De kwaliteit is getoetst over de periode `r rap_jaar-3`-`r rap_jaar`.**
 
-De zwemlocatie Willem-Alexanderbaan is pas sinds 2023 aangewezen als zwemlocatie en heeft daarom nog geen beoordeling.
+**De zwemlocatie Willem-Alexanderbaan is pas sinds 2023 aangewezen als zwemlocatie en heeft daarom nog geen beoordeling.**
 
 {{< pagebreak >}}
 
@@ -64,9 +68,9 @@ kaart_zwemlocaties
 
 Blauwalgen maken gifstoffen aan en vormen daarom een risico voor zwemmers. Blauwalgen vormen vaak een probleem als er teveel voedingsstoffen (fosfaat en stikstof) in het water zitten. Het waterschap heeft op veel plekken maatregelen uitgevoerd om fosfaat en stikstof te verminderen en zo de (zwem)waterkwaliteit te verbeteren.
 
-Als er veel blauwalgen op een zwemlocatie zijn, wordt daarvoor gewaarschuwd. In @fig-grafiek-blauwalgen is te zien hoeveel dagen er een waarschuwing[^04-zwemwater-2] van kracht is geweest op de zwemlocaties. In 2023 waren er iets meer waarschuwingen dan in de voorgaande drie jaar.
+Als er veel blauwalgen op een zwemlocatie zijn, wordt daarvoor gewaarschuwd. In @fig-grafiek-blauwalgen is te zien hoeveel dagen er een waarschuwing[^03-zwemwater-2] van kracht is geweest op de zwemlocaties. In 2024 waren er iets meer waarschuwingen dan in de voorgaande drie jaar.
 
-[^04-zwemwater-2]: Naast een waarschuwing wordt er soms ook een negatief zwemadvies afgegeven. Een negatief zwemadvies geeft een hoger waarschuwingsniveau aan en wordt afgegeven als er meer blauwalgen zijn. In de grafiek wordt het onderscheid tussen waarschuwingen en negatieve zwemadviezen niet getoond.
+[^03-zwemwater-2]: Naast een waarschuwing wordt er soms ook een negatief zwemadvies afgegeven. Een negatief zwemadvies geeft een hoger waarschuwingsniveau aan en wordt afgegeven als er meer blauwalgen zijn. In de grafiek wordt het onderscheid tussen waarschuwingen en negatieve zwemadviezen niet getoond.
 
 ```{r}
 #| label: fig-grafiek-blauwalgen
@@ -78,26 +82,51 @@ blauwalgenplot
 
 ```
 
+```{r}
+#| label: fig-grafiek-negatief-zwemadvies
+#| fig-cap: "Aantal dagen per zwemlocatie met een negatief zwemadvies voor blauwalg."
+#| fig-alt: "Aantal dagen per zwemlocatie met een negatief zwemadvies voor blauwalg."
+#| out-width: "100%"
+#| fig-width: 8
+#| fig-column: margin
+blauwalgenplot_nz
+
+```
+
+
+Op verschillende zwemlocaties zijn er in de afgelopen jaren maatregelen uitgevoerd om de waterkwaliteit te verbeteren en de hoeveelheid blauwalgen te verminderen. Het gaat om de Bleiswijkse Zoom (2021), de Kralingse Plas (2021) en de Krimpenerhout (2019 en 2024). Op deze locaties zijn in 2024 toch blauwalgen aangetroffen. Dat wil niet zeggen dat de maatregelen geen effect hebben. De hoeveelheid blauwalgen is op deze zwemlocaties een stuk kleiner dan voor de maatregelen. Dat is ook terug te zien doordat er op deze locaties bijna geen negatieve zwemadviezen[^03-zwemwater-3] meer worden gegeven (zie @fig-grafiek-negatief-zwemadvies).
+
+[^03-zwemwater-3]: Een negatief zwemadvies is zwaarder dan een waarschuwing. Bij een negatief zwemadvies wordt zwemmen ontraden vanwege de slechte zwemwaterkwaliteit. Voor een negatief zwemadvies moeten er ruim 6x meer blauwalgen aanwezig zijn dan voor een waarschuwing.
+
+
+
 {{< pagebreak >}}
 
 ### Jeukklachten {.unnumbered}
 
-Het gebeurt af en toe dat mensen melding maken van jeukklachten na het zwemmen. Jeukklachten worden meestal veroorzaakt door zwemmersjeuk[^04-zwemwater-3]. Als er meerdere meldingen zijn van jeukklachten dan geeft de provincie een waarschuwing af. Het waterschap doet dan aanvullend onderzoek naar zwemmersjeuk, maar zwemmersjeuk is in de praktijk vaak niet aan te tonen.
+Het gebeurt af en toe dat mensen melding maken van jeukklachten na het zwemmen. Jeukklachten worden meestal veroorzaakt door zwemmersjeuk[^03-zwemwater-4]. Als er meerdere meldingen zijn van jeukklachten dan geeft de provincie een waarschuwing af. Het waterschap doet dan aanvullend onderzoek naar zwemmersjeuk, maar zwemmersjeuk is in de praktijk vaak niet aan te tonen.
 
-[^04-zwemwater-3]: Zwemmersjeuk wordt veroorzaakt door larven van *Trichobilharzia* die normaal in slakken en watervogels leven. Zwemmersjeuk is erg hinderlijk maar niet gevaarlijk. Zie voor meer informatie [Zwemmersjeuk \| Thuisarts.nl](https://www.thuisarts.nl/zwemmersjeuk/ik-heb-zwemmersjeuk){target="_blank"}
+[^03-zwemwater-4]: Zwemmersjeuk wordt veroorzaakt door larven van *Trichobilharzia* die normaal in slakken en watervogels leven. Zwemmersjeuk is erg hinderlijk maar niet gevaarlijk. Zie voor meer informatie [Zwemmersjeuk \| Thuisarts.nl](https://www.thuisarts.nl/zwemmersjeuk/ik-heb-zwemmersjeuk){target="_blank"}
 
 Op de onderstaande kaart is te zien waar in `r rap_jaar` gewaarschuwd is vanwege jeukklachten.
 
 ```{r}
 #| label: fig-kaart-jeukklachten
-#| fig-cap: "Zwemlocaties met jeukklachten in 2023 (interactief)"
+#| fig-cap: "Zwemlocaties met jeukklachten in 2024 (interactief)"
 #| out-width: "100%"
 kaart_jeukklachten
 ```
 
 ### PFAS {.unnumbered}
 
-In 2023 heeft het waterschap onderzoek gedaan naar PFAS. Hierbij is ook gekeken naar de aanwezigheid van PFAS op zwemlocaties. Vanwege een hoge concentratie PFAS in het Kralings Zwembad heeft de provincie op deze locatie een negatief zwemadvies ingesteld.
+PFAS[^03-zwemwater-5] kan schadelijk zijn voor de gezondheid. In 2024 is op alle zwemlocaties gemeten hoeveel PFAS er in het water zit. Op één locatie na, ligt de hoeveelheid PFAS ruim onder de advieswaarde die het RIVM hiervoor heeft bepaald.[^03-zwemwater-6] In het Kralings Zwembad is wel een grote hoeveelheid PFAS gemeten. De provincie heeft hier een negatief zwemadvies ingesteld. Er wordt gewerkt om de bron van PFAS op deze locatie weg te nemen.
 
-Een verdere toelichting op de aanwezigheid van PFAS en de relatie met zwemwater is te vinden in [hoofdstuk @sec-pfas].
+[^03-zwemwater-5]: PFAS is de afkorting voor Per- en polyfluoralkylstoffen. Zie voor meer informatie: [HHSK - Antwoorden op vragen over PFAS in water](https://www.schielandendekrimpenerwaard.nl/wat-doen-we/zorg-voor-schoon-water/alles-over-pfas-in-water-en-bodem/antwoorden-op-vragen-over-pfas-in-water/ "HHSK - Antwoorden op vragen over PFAS in water")
 
+[^03-zwemwater-6]: [Advieswaarden PFAS in zwemwater \| RIVM](https://www.rivm.nl/publicaties/advieswaarden-pfas-in-zwemwater)
+
+```{r}
+#| label: fig-pfas
+#| fig-cap: "De hoeveelheid PFAS op zwemlocaties ten opzichte van de advieswaarde  van het RIVM."
+plot_pfas
+```

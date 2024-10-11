@@ -9,10 +9,11 @@ library(ggtext)
 
 ## ---- parameters en basisdata ----
 
-rap_jaar <- 2023
+rap_jaar <- 2024
 
 meetpunten <- HHSKwkl::import_meetpunten()
 ws_grens <- read_sf("data/ws_grens.gpkg") %>% st_transform(crs = 4326)
+pfas <- readRDS("data/fys_chem.rds") %>% filter(parnr == 2499, year(datum) == rap_jaar) %>% summarise(peq = mean(waarde), .by = mp)
 
 maatregelen <- readxl::read_excel("data/Zwemwater maatregelen vanaf 2012 v2.xlsx") %>% rename_all(tolower)
 
@@ -107,7 +108,7 @@ blauwalgenplot <-
   waarschuwingen %>%
   complete(jaar, nesting(naam, meetpunt), fill = list(dagen = 0)) %>%
   filter(!(meetpunt == "S_0152" & jaar < 2023)) %>%
-  mutate(naam = fct_reorder(naam, dagen, .desc = TRUE)) %>%
+  mutate(naam = fct_reorder(naam, dagen, .desc = TRUE, .fun = last)) %>% 
   filter(jaar >= rap_jaar - 9) %>%
   ggplot(aes(jaar, dagen, fill = (jaar == rap_jaar), (jaar == rap_jaar))) +
   geom_col(width = 0.85) +
@@ -130,10 +131,52 @@ blauwalgenplot <-
         axis.ticks.y = element_blank(),
         panel.grid.major.y = element_blank())
 
+neg_zwemadvies <- 
+  maatregelen %>% 
+  filter(probleem == "Blauwalg", 
+         # maatregel == "Negatief zwemadvies",
+         jaar <= rap_jaar) %>%
+  left_join(zwemlocaties, by = c("meetpunt" = "mp")) %>%
+  filter(!is.na(naam)) %>%
+  group_by(jaar, meetpunt, naam, maatregel) %>%
+  summarise(dagen = sum(dagen, na.rm = TRUE)) %>%
+  ungroup() %>% 
+  arrange(desc(naam)) %>% 
+  complete(jaar, maatregel, nesting(naam, meetpunt), fill = list(dagen = 0)) %>%
+  filter(maatregel == "Negatief zwemadvies")
+
+blauwalgenplot_nz <-
+  neg_zwemadvies %>%
+  complete(jaar, nesting(naam, meetpunt), fill = list(dagen = 0)) %>%
+  filter(!(meetpunt == "S_0152" & jaar < 2023)) %>%
+  filter(meetpunt %in% c("S_0124", "S_0128", "K_1102")) %>% 
+  mutate(naam = fct_reorder(naam, dagen, .desc = TRUE, .fun = last)) %>% 
+  filter(jaar >= rap_jaar - 9) %>%
+  ggplot(aes(jaar, dagen, fill = (jaar == rap_jaar), (jaar == rap_jaar))) +
+  geom_col(width = 0.85) +
+  geom_text(aes(label = dagen), nudge_y = 8, colour = "grey60") +
+  facet_wrap(~naam, ncol = 2, scales = "free_x") +
+  scale_x_continuous(limits = c(rap_jaar - 9.5, rap_jaar + 0.5), breaks = pretty_breaks(10), guide = guide_axis(n.dodge = 1), expand = c(0,0.1)) +
+  scale_y_continuous(limits = c(0, NA), expand = expansion(c(0, 0.1))) +
+  scale_fill_manual(values = c("TRUE" = hhskblauw, "FALSE" = "grey60"), guide = "none") +
+  labs(title = "Aantal dagen met negatief zwemadvies vanwege blauwalg",
+       x = "",
+       y = "") +
+  thema_line_facet +
+  theme(plot.title = element_markdown(face = "bold"),
+        axis.line.x = element_line(colour = "grey60"),
+        panel.spacing.x = unit(30, "points"),
+        panel.spacing.y = unit(20, "points"),
+        axis.ticks.x = element_blank(),
+        axis.line.y = element_blank(),
+        axis.text.y = element_blank(),
+        axis.ticks.y = element_blank(),
+        panel.grid.major.y = element_blank())
+
 
 locaties_jeuk  <- 
   maatregelen %>% 
-  filter(jaar == 2023, probleem == "Jeukklachten", maatregel != "Nader onderzoek") %>% 
+  filter(jaar == rap_jaar, probleem == "Jeukklachten", maatregel != "Nader onderzoek") %>% 
   rename(mp = meetpunt) %>% 
   summarise(jeukdagen = sum(dagen), .by = mp)
 
@@ -152,4 +195,20 @@ kaart_jeukklachten <-
              options = markerOptions(riseOnHover = TRUE)) %>%
   addPolylines(data = ws_grens, color = "#616161", weight = 3) 
 
-
+plot_pfas <- 
+  pfas %>% 
+  inner_join(zwemlocaties) %>% 
+  mutate(naam = fct_reorder(naam, peq)) %>% 
+  ggplot(aes(peq, naam)) + 
+  geom_col() + 
+  geom_vline(xintercept = 280, colour = oranje, linetype = "dashed", linewidth = 1) +
+  # scale_x_continuous(limits = c(0, NA), expand = expansion(c(0, 0.1))) +
+  scale_x_log10() +
+  labs(title = "Hoeveelheid PFAS op zwemlocaties",
+       y = "",
+       x = "PFAS - PFOA-equivalenten in ng/l") +
+  annotate("text", x = 300, y = 9, hjust = 0, label = "Advieswaarde RIVM", colour = oranje, fontface = "bold") +
+  coord_cartesian(ylim = c(1,8.7)) +
+  hhskthema() +
+  theme(panel.grid.major.y = element_blank(),
+        plot.title.position = "plot")
