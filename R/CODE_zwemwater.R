@@ -32,9 +32,9 @@ zwemlocaties <- tibble::tribble(
   ~mp,                            ~naam,     ~oordeel,
   "S_0058",     "Zevenhuizerplas Nesselande", "Uitstekend",
   "S_0124",               "Bleiswijkse Zoom", "Uitstekend",
-  "S_0128",                 "Kralingse Plas",       "Goed",
+  "S_0128",                 "Kralingse Plas", "Uitstekend",
   "S_0131", "Zevenhuizerplas Noordwestzijde", "Uitstekend",
-  "S_0152",           "Willem-Alexanderbaan", "Geen oordeel",
+  "S_0152",           "Willem-Alexanderbaan", "Aanvaardbaar",
   "S_1120",               "'t Zwarte Plasje", "Uitstekend",
   "S_1124",               "Kralings Zwembad", "Uitstekend",
   "K_1102",                  "Krimpenerhout", "Uitstekend"
@@ -53,10 +53,10 @@ zwem_icons <- leaflet::iconList(
                                    iconAnchorX = 15, iconAnchorY = 15),
   Slecht =       leaflet::makeIcon("images/icon_zwemwater_rood.png",
                                    iconWidth = 30, iconHeight = 30,
-                                   iconAnchorX = 15, iconAnchorY = 15),
-  `Geen oordeel` =       leaflet::makeIcon("images/icon_zwemwater_grijs.png",
-                                   iconWidth = 30, iconHeight = 30,
                                    iconAnchorX = 15, iconAnchorY = 15)
+  # `Geen oordeel` =       leaflet::makeIcon("images/icon_zwemwater_grijs.png",
+  #                                  iconWidth = 30, iconHeight = 30,
+  #                                  iconAnchorX = 15, iconAnchorY = 15)
 )
 
 # Let op dat de iconen ook in _book/images staan anders dan doet de legenda het niet
