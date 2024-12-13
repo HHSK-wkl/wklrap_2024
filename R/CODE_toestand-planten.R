@@ -16,9 +16,9 @@ library(leaflet)
 
 # copy_data(c("meetpunten.csv", "planten_info.xlsx", "biologie.csv"))
 
-rap_jaar <- 2023
+rap_jaar <- 2024
 
-meetpunten <- HHSKwkl::import_meetpunten()
+meetpunten <- readRDS("data/meetpunten.rds")
 ws_grens <- read_sf("data/ws_grens.gpkg") %>% st_transform(crs = 4326)
 bio <- readRDS("data/biologie.rds") %>% HHSKwkl::add_jaar()
 planten_info <- readxl::read_excel("data/planten_info.xlsx", sheet = "planten_info")
