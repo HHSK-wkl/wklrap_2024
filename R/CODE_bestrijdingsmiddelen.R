@@ -231,7 +231,8 @@ ind_overschr <-
   summarise(label_tekst_basis = glue_collapse(tekst_enkel, sep = "<br>"))
 
 # Aanpassen voor verschillende categorieen overschrijdingen
-pal <- colorFactor(palette = c(blauw, oranje), domain = c(TRUE, FALSE))
+pal <- colorFactor(palette = c(oranje_m, blauw, oranje), 
+                   domain = c("Geen normoverschrijding", "Beperkte normoverschrijding", "Grote normoverschrijding"))
 
 mspaf_label <- 
   mspaf_mp %>% 
@@ -250,6 +251,7 @@ kaart_overschrijdingen <-
   summarise(normoverschrijding = any(normoverschrijding, na.rm = TRUE),
             sno = sum(hoogste_overschrijding),
             sno_rond = format(signif(sno, digits = 3), decimal.mark = ","),
+            sno_tekst = cut(sno, breaks = c(-1,1, 10, 99999), labels = c("Geen normoverschrijding", "Beperkte normoverschrijding", "Grote normoverschrijding"), ordered_result = TRUE),
             label_tekst = glue("<b>Meetpunt {first(landgebruik)}:</b> {first(mp)}<br><br>
                                <b>Opgetelde normoverschrijding:</b> {sno_rond} x<br>
                                <b>Acute toxiciteit:</b> {first(`Acute effecten`)}<br>  
@@ -263,9 +265,9 @@ kaart_overschrijdingen <-
   sf::st_transform(crs = 4326) %>% 
   basiskaart() %>% 
   addPolylines(data = ws_grens, opacity = 1, color = "grey", weight = 2, label = "waterschapsgrens") %>%
-  addCircleMarkers(color = ~pal(normoverschrijding), stroke = FALSE, fillOpacity = 1, popup = ~label_tekst, 
+  addCircleMarkers(color = ~pal(sno_tekst), stroke = FALSE, fillOpacity = 1, popup = ~label_tekst, 
                    label = ~glue("De opgetelde normoverschrijding is {sno_rond} x")) %>% 
-  addLegend(colors = c(blauw, oranje), labels = c("Geen normoverschrijding", "Wel normoverschrijding"), opacity = 1, title = "Normoverschrijdingen") %>% 
+  addLegend(values = ~sno_tekst, pal = pal, opacity = 1, title = "Normoverschrijdingen") %>% 
   leaflet.extras::addFullscreenControl()
 
 # Toxiciteit --------------------------------------------------------------
