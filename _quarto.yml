@@ -43,7 +43,7 @@ language:
     section-title-abstract: ""
     title-block-published: "Datum"
     toc-title-document: "In dit hoofdstuk"
-    crossref-fig-title: "figuur"
+    crossref-fig-title: "Figuur"
     crossref-ch-prefix: "hoofdstuk"
     
 execute: 
