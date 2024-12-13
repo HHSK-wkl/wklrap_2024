@@ -9,14 +9,14 @@ library(glue)
 library(scales)
 library(ggbeeswarm)
 library(ggtext)
-library(plotly)
+# library(plotly)
 library(leaflet)
 
 rap_jaar <- 2024
 
 fys_chem <- readRDS("data/fys_chem.rds") %>% HHSKwkl::add_jaar()
-meetpunten <- HHSKwkl::import_meetpunten()
-parameters <- HHSKwkl::import_parameters()
+meetpunten <- readRDS("data/meetpunten.rds")
+parameters <- readRDS("data/parameters.rds")
 toxiciteit <- readxl::read_excel("data/gbm_toxiciteit.xlsx", sheet = "SSDinfo")
 ws_grens <- sf::st_read("data/ws_grens.gpkg", quiet = TRUE) %>% sf::st_transform(crs = 4326)
 
@@ -230,6 +230,7 @@ ind_overschr <-
   mutate(tekst_enkel = glue("{str_to_sentence(naam)}: {format(signif(hoogste_overschrijding, digits = 2), decimal.mark = ',')} x de norm")) %>%
   summarise(label_tekst_basis = glue_collapse(tekst_enkel, sep = "<br>"))
 
+# Aanpassen voor verschillende categorieen overschrijdingen
 pal <- colorFactor(palette = c(blauw, oranje), domain = c(TRUE, FALSE))
 
 mspaf_label <- 
@@ -389,7 +390,7 @@ tabel_niet_toetsbaar <-
             `Aantal keer aangetroffen` = glue("{n_aanwezig} ({percent(n_aanwezig / n)})"),
             .by = Naam) %>% 
   select(-n, -n_aanwezig) %>% 
-  bind_cols(tibble(`Soort stof` = rep("Insecticide", 3))) %>% #, Bijzonderheden = c("", "Giftig voor bijen", "Afbraak product van tolylfluanide"))) %>%
+  bind_cols(tibble(`Soort stof` = c("Fungicide", rep("Insecticide", 3)))) %>% #, Bijzonderheden = c("", "Giftig voor bijen", "Afbraak product van tolylfluanide"))) %>%
   knitr::kable(align = "lrl")
 
 
