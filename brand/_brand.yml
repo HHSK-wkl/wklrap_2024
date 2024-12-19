@@ -1,0 +1,30 @@
+color:
+  palette:
+    blauw: "#0067c6"
+    groen: "#76b900"
+    oranje: "#f9651f"
+    wit: "#ffffff"
+    # donkergrijs: "#555555"
+    donkerblauw: "#293173"
+    donkergroen: "#015f03"
+    donkergrijs: "#222222"
+    blue: "#ddeaf1"
+  background: wit
+  foreground: donkergrijs
+  primary: oranje
+  secondary: groen
+  tertiary: oranje
+  
+  
+
+# logo: 
+#   medium: logo.png
+
+typography:
+  fonts:
+    - family: Ruda
+      source: google
+  base: Ruda
+  headings: Ruda
+  # link:
+  #   color: donkerblauw

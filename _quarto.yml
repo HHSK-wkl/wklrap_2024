@@ -32,11 +32,14 @@ book:
 format:
   html:
     css: "styles_wklrap.css"
-    theme: cosmo
+    theme: 
+      - cosmo
+      # - brand
     fig-format: svg
     # cap-location: margin
     reference-location: document
     # mainfont: Verdana
+# brand: "brand/_brand.yml"
 lang: nl
 language: 
   nl:
