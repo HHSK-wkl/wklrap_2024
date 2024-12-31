@@ -1,12 +1,15 @@
 project:
+  title: "Rapportage waterkwaliteit 2024 - HHSK"
   type: book
   post-render: 
    - "R/post_render_zwem_icons.R"
 book:
-  title: "Rapportage waterkwaliteit 2024 - HHSK"
+  title: "Rapportage waterkwaliteit 2024"
+  sidebar:
+    title: "Rapportage waterkwaliteit 2024"
   # cover-image: "images/zomer_veenweide_full_colour_800px.jpg"
-  sidebar: 
-    logo: "images/logo_hhsk.png"
+  # sidebar: 
+  #   logo: "images/logo_hhsk.png"
   page-footer: 
     center: 
       "![](images/schonevoeten.png){width=50%}"
@@ -20,10 +23,9 @@ book:
   date: today
   chapters:
     - "index.qmd"
-    # -  "test.qmd" 
-    # - "01-zichtbare-toestand.qmd"
+    - "01-zichtbare-toestand.qmd"
     # - "02-krw.qmd"
-    - "03-zwemwater.qmd"
+    # - "03-zwemwater.qmd"
     # - "04-nutrienten.qmd"
     # - "05-bestrijdingsmiddelen.qmd"
     # - "07-PFAS.qmd"
@@ -34,12 +36,11 @@ format:
     css: "styles_wklrap.css"
     theme: 
       - cosmo
-      # - brand
+      - brand
     fig-format: svg
     # cap-location: margin
     reference-location: document
-    # mainfont: Verdana
-# brand: "brand/_brand.yml"
+brand: "brand/_brand.yml"
 lang: nl
 language: 
   nl:
