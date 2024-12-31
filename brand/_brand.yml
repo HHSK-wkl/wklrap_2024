@@ -21,17 +21,18 @@ color:
 
 logo:
   images:
-    logo-groot: "logo_hhsk_large.png"
-    logo-medium: "logo_hhsk_medium.png"
+    logo-groot: "logo_hhsk_750.png"
+    logo-medium: "logo_hhsk_750.png"
+    logo-wit: "logo_hhsk_750_wit.png"
   small: logo-medium
   medium: logo-medium
   large: logo-groot
 
-typography:
-  fonts:
-    - family: Ruda
-      source: google
-  base: Ruda
-  headings: Ruda
+# typography:
+#   fonts:
+#     - family: Ruda
+#       source: google
+#   base: Ruda
+#   headings: Ruda
   # link:
   #   color: donkerblauw
