@@ -1,6 +1,7 @@
 # source("R/CODE_setup_basis.R")
 
 # stop("Checken of alle planten ingedeeld zijn (submers etc...)")
+# gecheck 31-12-2024
 
 ## ---- libs ----
 
@@ -94,7 +95,7 @@ plot_submers <-
   geom_point(colour = blauw) +
   facet_wrap(~gebied, scales = "free_y") +
   scale_y_continuous(expand = expansion(mult = c(0, 0.0)), limits = c(0, 85)) +
-  scale_x_continuous(breaks = scales::breaks_width(2, 1), limits = c(NA, rap_jaar)) +
+  scale_x_continuous(breaks = scales::breaks_width(2, 0), limits = c(NA, rap_jaar)) +
   labs(title = "Wateren met planten onder water",
        subtitle = " ",
        y = "% van alle wateren",
@@ -106,7 +107,7 @@ plot_submers <-
 plot_kroos <-
   planten_per_groep %>%
   mutate(gebied = f_gebied(mp)) %>%
-  filter(jaar > 2010, bedekkingslaag == "kroos",
+  filter(jaar > 2008, bedekkingslaag == "kroos",
          gebied %in% c("Schieland", "Krimpenerwaard")) %>%
   group_by(jaar, gebied) %>% 
   summarise(perc = perc(waarde > 50)) %>% 
@@ -115,7 +116,7 @@ plot_kroos <-
   geom_point(colour = blauw) +
   facet_wrap(~gebied, scales = "free_y") +
   scale_y_continuous(expand = expansion(mult = c(0, 0.0)), limits = c(0, 50)) +
-  scale_x_continuous(breaks = scales::breaks_width(2, 1), limits = c(NA, rap_jaar)) +
+  scale_x_continuous(breaks = scales::breaks_width(2, 0), limits = c(NA, rap_jaar)) +
   labs(title = "Wateren met veel kroos",
        subtitle = " ",
        y = "% van alle wateren",
@@ -142,7 +143,7 @@ kaart_kreeften <-
   bio %>%
   select(-contains("stadium")) %>%
   distinct() %>%
-  filter(methode == "KR12", jaar == 2023, taxatype == "MACEV") %>%
+  filter(methode == "KR12", jaar == rap_jaar, taxatype == "MACEV") %>%
   filter(naam != "Eriocheir sinensis") %>% 
   mutate(waarde_totaal = round(waarde_totaal, digits = 0)) %>% 
   mutate(nednaam = f_nednaam(naam)) %>%
