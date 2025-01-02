@@ -6,17 +6,17 @@ color:
     wit: "#FFFFFF"
     donkerblauw: "#293173"
     donkergroen: "#015F03"
-    # donkergrijs: "#555555"
+    middelgrijs: "#555555"
     donkergrijs: "#222222"
     lichtoranje: "#FFBC80"
     lichtgroen: "#CBDF74"
     lichtblauw: "#8ED4dA"
+    lichtgrijs: "#777777"
   background: wit
-  foreground: donkergrijs
-  primary: oranje
-  secondary: groen
+  foreground: middelgrijs
+  primary: blauw
+  secondary: lichtgrijs
   tertiary: oranje
-  
   
 
 logo:
@@ -28,11 +28,15 @@ logo:
   medium: logo-medium
   large: logo-groot
 
-# typography:
-#   fonts:
-#     - family: Ruda
-#       source: google
+typography:
+  # fonts:
+  #   - family: Ruda
+  #     source: google
+  link:
+    color: oranje
+  # headings: 
+    # family: Ruda
+    # color: middelgrijs
+    # weight: 900
 #   base: Ruda
-#   headings: Ruda
-  # link:
-  #   color: donkerblauw
+  
