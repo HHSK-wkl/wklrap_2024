@@ -1,5 +1,6 @@
 ---
 lightbox: auto
+description: "Rapportage waterkwaliteit van waterschap Hoogheemraadschap van Schieland en de Krimpenerwaard (HHSK) 2024. Dit hoofdstuk gaat over de Kaderrichtlijn Water (KRW). Het beschrijft de ligging van de waterlichamen, de doelen en de technische doelaanpassing en de huidige toestand en de beoordeling. Het gaat zowel over de KRW-waterlichamen als over het zogenaamde overig water."
 ---
 
 # Ecologisch doelbereik - KRW {#sec-krw}
@@ -14,7 +15,7 @@ lightbox: auto
 |                                          |                                                                                              |
 |---|------------------------------------------------------------|
 | [{{< fa circle-info >}}]{.grijs}         | Het hoogheemraadschap heeft 26 verschillende waterlichamen.                                  |
-| [{{< fa circle-check >}}]{.blauw}        | Er zijn vier waterlichamen die momenteel voor alle biologische groepen voldoen aan het doel. |
+| [{{< fa circle-check >}}]{.blauw}        | Er zijn twee waterlichamen die momenteel voor alle biologische groepen voldoen aan het doel. |
 | [{{< fa circle-exclamation >}}]{.oranje} | Vooral in lijnvormige wateren voldoen waterplanten en macrofauna nog niet aan de doelen.     |
 | [{{< fa circle-exclamation >}}]{.grijs}  | Het meeste overige water bevindt zich op de helft van het doel.                              |
 
@@ -74,7 +75,7 @@ In @fig-krw-doelen is per waterlichaam te zien of en hoeveel de doelen naar bene
 
 ### KRW-opgave {.unnumbered}
 
-Uit de Kaderrichtlijn Water volgt de verplichting om te zorgen dat de waterkwaliteit in 2027 voldoet aan de doelstelling. In @fig-krw-opgave is te zien in welke mate de waterlichamen voldoen aan de doelstellingen. Het blauwe gedeelte van de balk toont de huidige toestand ten opzichte van het doel, het oranje gedeelte toont het gat tussen de huidige toestand en het doel. De toestand van de waterlichamen is bepaald met gegevens tot en met het jaar `r rap_jaar-1`.
+Uit de Kaderrichtlijn Water volgt de verplichting om de benodigde maatregelen te nemen zodat de waterkwaliteit in 2027 voldoet aan de doelstelling. In @fig-krw-opgave is te zien in welke mate de waterlichamen voldoen aan de doelstellingen. Het blauwe gedeelte van de balk toont de huidige toestand ten opzichte van het doel, het oranje gedeelte toont het gat tussen de huidige toestand en het doel. De toestand van de waterlichamen is bepaald met gegevens tot en met het jaar {{< var vorig_jaar >}}.
 
 Er is te zien dat de boezems en de plassen grotendeels voldoen aan de doelstellingen. De lijnvormige wateren voldoen vaak nog niet aan de doelstelling. Vooral op het gebied van waterplanten en macrofauna worden de gestelde doelen nog niet bereikt.
 
@@ -122,7 +123,7 @@ overig_doelen
 ```
 :::
 
-De biologische doelen voor het overig water zijn hoofdzakelijk gebaseerd op waterplanten[^02-krw-3]. In het gebied van HHSK zijn waterplanten het meest bepalend voor het functioneren van het ecosysteem. De wijze waarop deze doelen zijn bepaald, is vergelijkbaar met de methode voor de KRW . Voor het bereiken van de doelen voor het overig water geldt een inspanningsverplichting.
+De biologische doelen voor het overig water zijn hoofdzakelijk gebaseerd op waterplanten[^02-krw-3]. In het gebied van HHSK zijn waterplanten het meest bepalend voor het functioneren van het ecosysteem. De wijze waarop deze doelen zijn bepaald, is vergelijkbaar met de methode voor de KRW. Voor het bereiken van de doelen voor het overig water geldt een inspanningsverplichting.
 
 [^02-krw-3]: De zwemplas Krimpenerhout is hierop een uitzondering: hier is ook een doel voor algen bepaald. In deze rapportage wordt dit verder niet besproken.
 
@@ -130,7 +131,7 @@ De doelen voor het overig water zijn afgeleid van standaard-doelen.[^02-krw-4] B
 
 [^02-krw-4]: Ook dit is vergelijkbaar met de wijze waarop de de doelen voor de KRW zijn bepaald.
 
-In de onderstaande figuur (@fig-overig-opgave) is in blauw te zien wat de huidige ecologische toestand is ten opzichte van het doel. Het oranje deel laat zien wat de opgave is voor verbetering. De waterparel Zuidplaspolder en het plas-drasgebied van de Eendragtspolder voldoen aan het doel. De zwemplas Krimpenerhout is dichtbij het gestelde doel. In de andere overige wateren is de ecologische toestand ongeveer de helft van het gestelde doel.
+In de onderstaande figuur (@fig-overig-opgave) is in blauw te zien wat de huidige ecologische toestand is ten opzichte van het doel. Het oranje deel laat zien wat de opgave is voor verbetering. Het plas-drasgebied van de Eendragtspolder, de waterparel Zuidplaspolder en de zwemplas Krimpenerhout voldoen aan het gestelde doel. In de andere overige wateren is de gemiddelde ecologische toestand ongeveer de helft van het gestelde doel. 
 
 ```{r}
 #| label: fig-overig-opgave

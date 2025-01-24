@@ -1,5 +1,6 @@
 ---
 lightbox: auto
+description: "Rapportage waterkwaliteit van waterschap Hoogheemraadschap van Schieland en de Krimpenerwaard (HHSK) 2024. Dit hoofdstuk gaat over de algemene waterkwaliteitstoestand. Het gaat over de hoeveelheid waterplanten en kroos; over de invasieve exoot de Amerikaanse Rivierkreeft en over de aanwezigheid van blauwalgen"
 ---
 
 # Toestand waterkwaliteit {#sec-toestand}
