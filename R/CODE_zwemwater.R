@@ -1,4 +1,4 @@
-# source("R/CODE_index_setup.R")
+## ---- Setup ----
 
 library(HHSKwkl)
 library(tidyverse)
@@ -7,22 +7,24 @@ library(leaflet)
 library(sf)
 library(ggtext)
 
-## ---- parameters en basisdata ----
 
 rap_jaar <- 2024
 
-meetpunten <- HHSKwkl::import_meetpunten()
+meetpunten <- readRDS("data/meetpunten.rds")
 ws_grens <- read_sf("data/ws_grens.gpkg") %>% st_transform(crs = 4326)
 pfas <- readRDS("data/fys_chem.rds") %>% filter(parnr == 2499, year(datum) == rap_jaar) %>% summarise(peq = mean(waarde), .by = mp)
 
 maatregelen <- readxl::read_excel("data/Zwemwater maatregelen vanaf 2012 v2.xlsx") %>% rename_all(tolower)
 
-# blauwe_tekst <- function(tekst, grootte = NA){
-#   grootte <- if (is.na(grootte)) "" else glue::glue(";font-size:{grootte}px")
-#   glue::glue("<span style='color:#0079c2{grootte}'>{tekst}</span>")
-# }
+blauwe_tekst <- function(tekst, grootte = NA){
+  grootte <- if (is.na(grootte)) "" else glue::glue(";font-size:{grootte}px")
+  glue::glue("<span style='color:#0079c2{grootte}'>{tekst}</span>")
+}
 
-
+oranje_tekst <- function(tekst, grootte = NA){
+  grootte <- if (is.na(grootte)) "" else glue::glue(";font-size:{grootte}px")
+  glue::glue("<span style='color:#C25100{grootte}'>{tekst}</span>")
+}
 
 ## ---- kaart-zwemlocaties ----
 
@@ -95,7 +97,7 @@ waarschuwingen <-
   filter(probleem == "Blauwalg", jaar <= rap_jaar) %>%
   left_join(zwemlocaties, by = c("meetpunt" = "mp")) %>%
   filter(!is.na(naam)) %>%
-  group_by(jaar, meetpunt, naam) %>%
+  group_by(jaar, meetpunt, naam, maatregel) %>%
   summarise(dagen = sum(dagen, na.rm = TRUE)) %>%
   ungroup() #%>%
   # mutate(afkorting = afkortingen[meetpunt])
@@ -106,17 +108,20 @@ waarschuwingen <-
 
 blauwalgenplot <-
   waarschuwingen %>%
-  complete(jaar, nesting(naam, meetpunt), fill = list(dagen = 0)) %>%
+  complete(jaar, nesting(naam, meetpunt), fill = list(dagen = 0, maatregel = "Waarschuwing")) %>%
   filter(!(meetpunt == "S_0152" & jaar < 2023)) %>%
+  mutate(dagen_totaal = sum(dagen, na.rm = TRUE), .by = c(jaar, naam)) %>% 
   mutate(naam = fct_reorder(naam, dagen, .desc = TRUE, .fun = last)) %>% 
+  mutate(maatregel = fct_rev(maatregel)) %>% 
   filter(jaar >= rap_jaar - 9) %>%
-  ggplot(aes(jaar, dagen, fill = (jaar == rap_jaar), (jaar == rap_jaar))) +
-  geom_col(width = 0.85) +
-  geom_text(aes(label = dagen), nudge_y = 15, colour = "grey60") +
+  ggplot(aes(jaar, dagen, fill = maatregel)) +
+  geom_col(width = 0.85, colour = grijs_l) +
+  geom_text(aes(y = dagen_totaal, label = dagen_totaal), nudge_y = 15, colour = "grey60") +
   facet_wrap(~naam, ncol = 2, scales = "free_x") +
   scale_x_continuous(limits = c(rap_jaar - 9.5, rap_jaar + 0.5), breaks = pretty_breaks(10), guide = guide_axis(n.dodge = 1), expand = c(0,0.1)) +
   scale_y_continuous(limits = c(0, NA), expand = expansion(c(0, 0.1))) +
-  scale_fill_manual(values = c("TRUE" = hhskblauw, "FALSE" = "grey60"), guide = "none") +
+  scale_fill_manual(values = c("Waarschuwing" = oranje_l, "Negatief zwemadvies" = oranje),
+                    guide = guide_legend(title = "", reverse = FALSE)) +
   labs(title = "Aantal dagen met blauwalg",
        x = "",
        y = "") +
@@ -129,49 +134,58 @@ blauwalgenplot <-
         axis.line.y = element_blank(),
         axis.text.y = element_blank(),
         axis.ticks.y = element_blank(),
-        panel.grid.major.y = element_blank())
+        panel.grid.major.y = element_blank(),
+        legend.position = "top")
 
-neg_zwemadvies <- 
-  maatregelen %>% 
-  filter(probleem == "Blauwalg", 
-         # maatregel == "Negatief zwemadvies",
-         jaar <= rap_jaar) %>%
-  left_join(zwemlocaties, by = c("meetpunt" = "mp")) %>%
-  filter(!is.na(naam)) %>%
-  group_by(jaar, meetpunt, naam, maatregel) %>%
-  summarise(dagen = sum(dagen, na.rm = TRUE)) %>%
-  ungroup() %>% 
-  arrange(desc(naam)) %>% 
-  complete(jaar, maatregel, nesting(naam, meetpunt), fill = list(dagen = 0)) %>%
-  filter(maatregel == "Negatief zwemadvies")
+aantal_dagen_blauwalg_gemiddeld <- 
+  waarschuwingen %>%
+  filter(jaar == rap_jaar) %>% 
+  summarise(gem_aantal = sum(dagen) / 8) %>% 
+  pull(gem_aantal) %>% 
+  round()
 
-blauwalgenplot_nz <-
-  neg_zwemadvies %>%
-  complete(jaar, nesting(naam, meetpunt), fill = list(dagen = 0)) %>%
-  filter(!(meetpunt == "S_0152" & jaar < 2023)) %>%
-  filter(meetpunt %in% c("S_0124", "S_0128", "K_1102")) %>% 
-  mutate(naam = fct_reorder(naam, dagen, .desc = TRUE, .fun = last)) %>% 
-  filter(jaar >= rap_jaar - 9) %>%
-  ggplot(aes(jaar, dagen, fill = (jaar == rap_jaar), (jaar == rap_jaar))) +
-  geom_col(width = 0.85) +
-  geom_text(aes(label = dagen), nudge_y = 8, colour = "grey60") +
-  facet_wrap(~naam, ncol = 2, scales = "free_x") +
-  scale_x_continuous(limits = c(rap_jaar - 9.5, rap_jaar + 0.5), breaks = pretty_breaks(10), guide = guide_axis(n.dodge = 1), expand = c(0,0.1)) +
-  scale_y_continuous(limits = c(0, NA), expand = expansion(c(0, 0.1))) +
-  scale_fill_manual(values = c("TRUE" = hhskblauw, "FALSE" = "grey60"), guide = "none") +
-  labs(title = "Aantal dagen met negatief zwemadvies vanwege blauwalg",
-       x = "",
-       y = "") +
-  thema_line_facet +
-  theme(plot.title = element_markdown(face = "bold"),
-        axis.line.x = element_line(colour = "grey60"),
-        panel.spacing.x = unit(30, "points"),
-        panel.spacing.y = unit(20, "points"),
-        axis.ticks.x = element_blank(),
-        axis.line.y = element_blank(),
-        axis.text.y = element_blank(),
-        axis.ticks.y = element_blank(),
-        panel.grid.major.y = element_blank())
+# blauwalgenplot_totaal <- 
+#   waarschuwingen %>%
+#   filter(maatregel != "Zwemverbod") %>% 
+#   complete(jaar, nesting(naam, meetpunt), maatregel, fill = list(dagen = 0)) %>%
+#   filter(!(meetpunt == "S_0152" & jaar < 2023)) %>%
+#   filter(jaar >= rap_jaar - 9) %>% 
+#   group_by(jaar, maatregel) %>% 
+#   summarise(gem_dagen = mean(dagen)) %>% 
+#   ungroup() %>% 
+#   mutate(dagen_totaal = round(sum(gem_dagen, na.rm = TRUE), digits = 0), .by = c(jaar)) %>%
+#   # mutate(naam = fct_reorder(naam, dagen, .desc = TRUE, .fun = last)) %>% 
+#   mutate(maatregel = fct_rev(maatregel)) %>% 
+#   
+#   ggplot(aes(jaar, gem_dagen, fill = maatregel)) +
+#   geom_col(width = 0.85, colour = grijs_l) +
+#   geom_text(aes(y = dagen_totaal, label = dagen_totaal), nudge_y = 2
+#             , colour = "grey60") +
+#   # facet_wrap(~naam, ncol = 2, scales = "free_x") +
+#   scale_x_continuous(limits = c(rap_jaar - 9.5, rap_jaar + 0.5), breaks = pretty_breaks(10), guide = guide_axis(n.dodge = 1), expand = c(0,0.1)) +
+#   scale_y_continuous(limits = c(0, NA), expand = expansion(c(0, 0.1))) +
+#   scale_fill_manual(values = c("Waarschuwing" = oranje_l, "Negatief zwemadvies" = oranje),
+#                     guide = guide_legend(title = "", reverse = FALSE)) +
+#   labs(title = "Gemiddeld aantal dagen met blauwalg",
+#        subtitle = "Alle locaties",
+#        x = "",
+#        y = "") +
+#   thema_line_facet +
+#   theme(plot.title = element_markdown(face = "bold"),
+#         axis.line.x = element_line(colour = "grey60"),
+#         panel.spacing.x = unit(30, "points"),
+#         panel.spacing.y = unit(20, "points"),
+#         axis.ticks.x = element_blank(),
+#         axis.line.y = element_blank(),
+#         axis.text.y = element_blank(),
+#         axis.ticks.y = element_blank(),
+#         panel.grid.major.y = element_blank(),
+#         legend.position = "top")
+
+
+
+# Zwemmersjeuk ------------------------------------------------------------
+
 
 
 locaties_jeuk  <- 
@@ -195,20 +209,29 @@ kaart_jeukklachten <-
              options = markerOptions(riseOnHover = TRUE)) %>%
   addPolylines(data = ws_grens, color = "#616161", weight = 3) 
 
+
+# PFAS --------------------------------------------------------------------
+
+
+
 plot_pfas <- 
   pfas %>% 
   inner_join(zwemlocaties) %>% 
   mutate(naam = fct_reorder(naam, peq)) %>% 
   ggplot(aes(peq, naam)) + 
-  geom_col() + 
+  geom_col(width = 0.85) + 
   geom_vline(xintercept = 280, colour = oranje, linetype = "dashed", linewidth = 1) +
-  # scale_x_continuous(limits = c(0, NA), expand = expansion(c(0, 0.1))) +
-  scale_x_log10() +
+  scale_x_continuous(limits = c(0, NA), expand = expansion(c(0, 0.1))) +
+  # scale_x_log10() +
   labs(title = "Hoeveelheid PFAS op zwemlocaties",
        y = "",
        x = "PFAS - PFOA-equivalenten in ng/l") +
   annotate("text", x = 300, y = 9, hjust = 0, label = "Advieswaarde RIVM", colour = oranje, fontface = "bold") +
-  coord_cartesian(ylim = c(1,8.7)) +
+  coord_cartesian(ylim = c(1, 8.7)) +
   hhskthema() +
   theme(panel.grid.major.y = element_blank(),
-        plot.title.position = "plot")
+        plot.title.position = "plot",
+        axis.text.y = element_text(size = 10),
+        axis.line.y = element_blank(),
+        axis.ticks.y = element_blank())
+
