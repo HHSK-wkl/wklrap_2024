@@ -1,6 +1,5 @@
-# source("R/CODE_index_setup.R")
-
 # Setup -------------------------------------------------------------------
+
 
 library(tidyverse)
 library(HHSKwkl)
@@ -11,8 +10,8 @@ library(scales)
 rap_jaar <- 2024
 
 fys_chem <- readRDS("data/fys_chem.rds") %>% HHSKwkl::add_jaar()
-meetpunten <- HHSKwkl::import_meetpunten()
-parameters <- HHSKwkl::import_parameters()
+meetpunten <- readRDS("data/meetpunten.rds")
+parameters <- readRDS("data/parameters.rds")
 
 theme_set(hhskthema())
 
