@@ -1,7 +1,7 @@
 # source("R/CODE_setup_basis.R")
 
 # stop("Checken of alle planten ingedeeld zijn (submers etc...)")
-# gecheck 31-12-2024
+# gecheckt 31-12-2024
 
 ## ---- libs ----
 
@@ -20,18 +20,16 @@ library(leaflet)
 rap_jaar <- 2024
 
 meetpunten <- readRDS("data/meetpunten.rds")
-ws_grens <- read_sf("data/ws_grens.gpkg") %>% st_transform(crs = 4326)
 bio <- readRDS("data/biologie.rds") %>% HHSKwkl::add_jaar()
-planten_info <- readxl::read_excel("data/planten_info.xlsx", sheet = "planten_info")
 fys_chem <- readRDS("data/fys_chem.rds")
+ws_grens <- read_sf("data/ws_grens.gpkg") %>% st_transform(crs = 4326)
+planten_info <- readxl::read_excel("data/planten_info.xlsx", sheet = "planten_info")
 
 
 f_mp_type <- maak_opzoeker(meetpunten, mp, meetpunttypering)
 f_gebied <-  maak_opzoeker(meetpunten, mp, gebiednaam)
 
 ## ---- planten-voorbewerking ----
-
-
 
 planten <-
   bio %>%
@@ -77,7 +75,7 @@ planten_per_groep <-
             waarde = ifelse(waarde > 100, 100, waarde)) %>%
   ungroup() %>%
   complete(nesting(mp, datum, jaar), bedekkingslaag, fill = list(waarde = 0)) %>% # toevoegen van ontbrekende bedekkingslagen
-  filter(!is.na(bedekkingslaag))
+  filter(!is.na(bedekkingslaag)) # planten zonder bedekkingslaag zijn niet aquatisch
 
 
 # Grafieken submers en kroos ----------------------------------------------
@@ -94,11 +92,11 @@ plot_submers <-
   geom_line(colour = blauw, linewidth = 1) +
   geom_point(colour = blauw) +
   facet_wrap(~gebied, scales = "free_y") +
-  scale_y_continuous(expand = expansion(mult = c(0, 0.0)), limits = c(0, 85)) +
+  scale_y_continuous(expand = expansion(mult = c(0, 0.0)), limits = c(0, 85), labels = scales::label_percent(scale = 1)) +
   scale_x_continuous(breaks = scales::breaks_width(2, 0), limits = c(NA, rap_jaar)) +
   labs(title = "Wateren met planten onder water",
        subtitle = " ",
-       y = "% van alle wateren",
+       y = "aandeel van alle wateren",
        x = "",
        caption = "locaties met tenminste 5% begroeiing") +
   thema_line_facet
@@ -115,11 +113,11 @@ plot_kroos <-
   geom_line(colour = blauw, linewidth = 1) +
   geom_point(colour = blauw) +
   facet_wrap(~gebied, scales = "free_y") +
-  scale_y_continuous(expand = expansion(mult = c(0, 0.0)), limits = c(0, 50)) +
+  scale_y_continuous(expand = expansion(mult = c(0, 0.0)), limits = c(0, 50), labels = scales::label_percent(scale = 1)) +
   scale_x_continuous(breaks = scales::breaks_width(2, 0), limits = c(NA, rap_jaar)) +
   labs(title = "Wateren met veel kroos",
        subtitle = " ",
-       y = "% van alle wateren",
+       y = "aandeel van alle wateren",
        x = "",
        caption = "locaties meer dan de helft bedekt met kroos") +
   thema_line_facet

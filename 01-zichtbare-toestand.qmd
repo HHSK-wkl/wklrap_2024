@@ -31,9 +31,9 @@ In dit hoofdstuk wordt de toestand van de waterkwaliteit beschreven aan de hand 
 
 ### Waterplanten {.unnumbered}
 
-Waterplanten hebben een sleutelrol in het onderwaterleven (ecosysteem). Ze zorgen voor de productie van zuurstof en vormen het leefgebied voor vissen en andere waterdieren. Door deze sleutelrol geven waterplanten een goede indicatie van de waterkwaliteit en de toestand van het leven onder water. De meeste planten hebben een positieve rol in het ecosysteem. Er zijn echter ook soorten, zoals kroos, die niet zo gunstig voor het water zijn.
+Waterplanten hebben een sleutelrol in het onderwaterleven (ecosysteem). Ze zorgen voor de productie van zuurstof en vormen het voedsel en leefgebied voor vissen en andere waterdieren. Door deze sleutelrol geven waterplanten een goede indicatie van de waterkwaliteit en de toestand van het leven onder water. De meeste planten hebben een positieve rol in het ecosysteem. Er zijn echter ook soorten, zoals kroos, die kunnen zorgen voor problemen.
 
-Planten die onder water groeien zijn belangrijk voor het onderwaterleven. In de Krimpenerwaard is het aantal locaties met planten onder water[^01-zichtbare-toestand-1] sterk afgenomen. Vooral in de laatste zeven jaar is een sterke afname te zien. Het is aannemelijk dat de afname van waterplanten te maken heeft met de opkomst van Amerikaanse rivierkreeften.
+In de Krimpenerwaard is het aantal locaties met planten onder water[^01-zichtbare-toestand-1] sterk afgenomen. Vooral in de laatste zeven jaar is een sterke afname te zien. Het is aannemelijk dat de afname van waterplanten komt door de opkomst van Amerikaanse rivierkreeften.
 
 [^01-zichtbare-toestand-1]: Als grens voor wateren met waterplanten is aangehouden dat meer dan 5% van de oppervlakte met waterplanten begroeid moet zijn.
 
@@ -75,7 +75,7 @@ plot_kroos
 
 Amerikaanse rivierkreeften komen oorspronkelijk niet in Nederland voor: ze zijn hier ontsnapt of vrijgelaten. Sinds een aantal jaar worden de kreeften op steeds meer plekken gezien. De meeste kreeften blijven in het water, maar in de zomer worden ze ook regelmatig gezien in tuinen of op het fietspad.
 
-De Amerikaanse rivierkreeften hebben een negatieve invloed op het watersysteem. Ze graven in de oevers waardoor oevers afkalven en er meer bagger in de watergangen ontstaat. Ook zijn de kreeften echte alleseters: veel planten en dieren die van nature voorkomen worden door de kreeften opgegeten. De kreeften zijn waarschijnlijk de oorzaak van de afname van waterplanten in het gebied. De aanwezigheid van de kreeften is een probleem voor de waterkwaliteit.
+De Amerikaanse rivierkreeften hebben een negatieve invloed op het watersysteem. Ze graven in de oevers waardoor oevers afkalven en er meer bagger in de watergangen ontstaat. Ook zijn de kreeften echte alleseters: veel planten en dieren die van nature voorkomen worden door de kreeften opgegeten. De kreeften zijn waarschijnlijk de oorzaak van de afname van waterplanten in het gebied. De massale aanwezigheid van de kreeften is een groot probleem voor de waterkwaliteit.
 
 ::: aside
 ![Een Rode amerikaanse rivierkreeft](images/IMG_4177a.JPG){group="toestand"}
@@ -99,7 +99,7 @@ kaart_kreeften
 
 ### Blauwalgen {.unnumbered}
 
-Blauwalgen[^01-zichtbare-toestand-4] zijn geen echte algen maar een bepaalde groep bacteriën (cyanobacteriën) die zich gedragen als algen. Onder voedselrijke omstandigheden kunnen blauwalgen massaal gaan groeien. Hierdoor wordt het water troebel waardoor andere planten niet kunnen groeien. Blauwalgen vormen ook vaak drijflagen die na verloop van tijd afsterven en gaan rotten. Zo'n afstervende drijflaag gaat behoorlijk stinken. Drijflagen van blauwalgen zijn makkelijk te herkennen aan hoe ze eruit zien en soms ook aan de lucht. De aanwezigheid van veel blauwalgen is een aanwijzing dat de waterkwaliteit niet zo goed is.
+Blauwalgen zijn vaak te herkennen aan een intense groene kleur van het water.[^01-zichtbare-toestand-4] Blauwalgen zijn geen echte algen maar een bepaalde groep bacteriën (cyanobacteriën) die zich gedragen als algen. Onder voedselrijke omstandigheden kunnen blauwalgen massaal gaan groeien. Hierdoor wordt het water troebel waardoor andere planten niet kunnen groeien. Blauwalgen vormen ook vaak drijflagen die na verloop van tijd afsterven en gaan rotten. Zo'n afstervende drijflaag gaat behoorlijk stinken. Drijflagen van blauwalgen zijn makkelijk te herkennen aan hoe ze eruit zien en soms ook aan de lucht. De aanwezigheid van veel blauwalgen is een aanwijzing dat de waterkwaliteit niet zo goed is.
 
 [^01-zichtbare-toestand-4]: Ondanks hun naam zijn blauwalgen niet blauw, maar groen. De naam blauwalgen hebben ze gekregen door de blauwe kleurstof die vrijkomt als ze afsterven.
 
