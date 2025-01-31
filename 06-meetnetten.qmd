@@ -1,0 +1,106 @@
+---
+lightbox: auto
+---
+
+# Waterkwaliteitsonderzoek {#sec-meetnetten}
+
+::: samenvatting
+|                                          |       |
+|------------------------------------------|-------|
+| [{{< fa circle-exclamation >}}]{.oranje} | tekst |
+| [{{< fa circle-exclamation >}}]{.oranje} | tekst |
+
+::: aside
+![](images%5Cvince_talk2_rev.svg){.nolightbox fig-align="center" width="200" fig-alt="Pictogram van een pratende vis"}
+:::
+:::
+
+------------------------------------------------------------------------
+
+```{r}
+#| label: code-meetnetten
+#| file: "R/CODE_meetnetten.R"
+#| include: false
+#| cache: false
+```
+
+### Introductie {.unnumbered}
+
+De informatie in deze jaarlijkse waterkwaliteitsrapportage is voornamelijk afkomstig van de diverse meetnetten die het waterschappen heeft. In dit hoofdstuk vind je informatie over welke metingen zijn gedaan en welke meetnetten het waterschap heeft.
+
+Waterkwaliteitsonderzoek kun je verdelen in twee groepen: onderzoek naar de samenstelling van het water (chemisch) en onderzoek naar wat er in en langs het water leeft (biologie). Voor het chemische onderzoek wordt het water periodiek bemonsterd. Deze watermonsters worden in het laboratorium onderzocht. Hierbij weten we van te voren welke stoffen we gaan meten. Bij biologisch onderzoek gaat er iemand naar een bepaalde plek om te kijken welke soorten van een bepaalde groep aanwezig zijn. Daarbij weet je niet van te voren welke soorten er worden gevonden.
+
+Voor het waterkwaliteitsonderzoek maakt het waterschap gebruik van verschillende meetnetten. Een meetnet bestaat uit een aantal onderzoekslocaties die periodiek worden onderzocht. Ieder meetnet heeft een specifiek doel. De frequentie en het soort metingen is aangepast op het doel van het meetnet
+
+### Wat meet het waterschap? {.unnumbered}
+
+#### Samenstelling van het water {.unnumbered}
+
+De samenstelling van het water is in {{< rap_jaar >}} op **`r blauwe_tekst(n_locs_fc, 20)`** verschillende locaties onderzocht. Daarvoor zijn **`r blauwe_tekst(n_monsters_fc, 20)`** monsters genomen. In totaal is er onderzoek gaan naar **`r blauwe_tekst(n_parameters_fc, 20)`** verschillende stoffen en kenmerken van het water.
+
+::: column-body-outset
+```{r}
+#| label: tabel-chemie
+#| tbl-cap: "Aantal chemische metingen en meetlocaties in {{< rap_jaar >}}. (interactief)"
+
+tabel_chemie_metingen
+```
+:::
+
+#### Wat leeft er in het water {.unnumbered}
+
+TESKT
+
+::: column-page-inset
+```{r}
+#| label: tabel-biologie
+
+tabel_bio_waarnemingen
+```
+:::
+
+### Meetnetten {.unnumbered}
+
+Het doel van het basismeetnet is om de waterkwaliteit van de belangrijkste wateren te kunnen volgen en bewaken. De meetlocaties van het basismeetnet liggen daarom in de boezems,in de grotere plassen en op plekken waar water ingelaten of uitgepompt wordt. Op de locaties van het basismeetnet wordt ieder jaar elke maand een monster genomen. Voor het basismeetnet worden vooral algemene kenmerken en natuurlijk voorkomende chemische stoffen gemeten. In de grote plassen en boezems wordt ook de hoeveelheid algen gemeten.
+
+**Aantal meetlocaties `r n_locs_meetnet("basis")`**\
+**Meetfrequentie: jaarlijks - iedere maand**\
+**Wat wordt gemeten**
+
+::: {layout-ncol="3"}
+::: {#basis1}
+-   Geleidendheid
+-   Zuurstof
+-   Doorzicht
+-   Zuurgraad (pH)
+-   Temperatuur
+-   Kroosbedekking
+:::
+
+::: {#basis2}
+-   Chloride
+-   Ortho-fosfaat
+-   Totaal fosfaat
+-   Ammonium
+-   Nitraat
+-   Nitriet
+:::
+
+::: {#basis3}
+-   Totaal stikstof
+-   Sulfaat
+-   Waterstofcarbonaat
+-   Chlorofyl-a (algen)
+-   Onopgeloste stoffen
+:::
+:::
+
+Aantal meetlocaties - meetfrequentie - meetpakket (welke stoffen)
+
+```{r}
+#| eval: false
+#| label: meetnet-basis
+#| out-width: "100%"
+#| fig-cap: "De locaties van het het basismeetnet"
+meetnet_basis
+```
