@@ -1,5 +1,3 @@
-# source("R/CODE_index_setup.R")
-
 # SETUP -------------------------------------------------------------------
 
 library(tidyverse)
@@ -99,7 +97,7 @@ toetsing <- data_gbm %>% HHSKwkl::toetsing_gbm(normen, factor_detectiegrens = 0.
 
 mspaf_mp <-
   data_gbm %>%
-  filter(jaar == rap_jaar) %>%
+  filter(jaar > rap_jaar - 10) %>%
   mutate(paf_acuut = paf_gbm(f_aquopar(parnr),
                              concentratie = waarde,
                              detectiegrens = detectiegrens,
@@ -113,12 +111,10 @@ mspaf_mp <-
   # afhandelen detectiegrenswaarden
   mutate(paf_acuut = ifelse(is.na(detectiegrens), paf_acuut, 0),
          paf_chronisch = ifelse(is.na(detectiegrens), paf_chronisch, 0)) %>%
-  group_by(mp) %>%
-  mutate(aantal_monsters = n_distinct(datum)) %>%
-  group_by(mp, parnr) %>%
+  mutate(aantal_monsters = n_distinct(datum), .by = c(mp, jaar)) %>%
   # alleen de hoogste waarde telt mee in de msPAF
-  filter(waarde == max(waarde)) %>%
-  group_by(mp, aantal_monsters) %>%
+  filter(waarde == max(waarde), .by = c(mp, parnr, jaar)) %>%
+  group_by(mp, aantal_monsters, jaar) %>%
   summarise(`Acute effecten` = mspaf(paf_acuut),
             `Chronische effecten` = mspaf(paf_chronisch)) %>%
   ungroup() %>%
@@ -172,25 +168,25 @@ aantal_stoffen <-
 
 aantal_gbm_aanwezig <-   aantal_stoffen %>% filter(jaar == rap_jaar, categorie == "Aangetroffen") %>% pull(totaal)
 
-verschil_gbm_aanwezig <-
-  aantal_stoffen %>%
-  filter(jaar >= rap_jaar - 3, jaar < rap_jaar, categorie == "Aangetroffen") %>%
-  pull(totaal) %>%
-  mean() %>%
-  round() %>%
-  {aantal_gbm_aanwezig - .} %>%
-  meer_of_minder()
+# verschil_gbm_aanwezig <-
+#   aantal_stoffen %>%
+#   filter(jaar >= rap_jaar - 3, jaar < rap_jaar, categorie == "Aangetroffen") %>%
+#   pull(totaal) %>%
+#   mean() %>%
+#   round() %>%
+#   {aantal_gbm_aanwezig - .} %>%
+#   meer_of_minder()
 
 aantal_gbm_overschrijdend <-  aantal_stoffen %>% filter(jaar == rap_jaar, categorie == "Normoverschrijdend") %>% pull(aantal)
 
-verschil_gbm_overschrijdend <-
-  aantal_stoffen %>%
-  filter(jaar >= rap_jaar - 3, jaar < rap_jaar, categorie == "Normoverschrijdend") %>%
-  pull(aantal) %>%
-  mean() %>%
-  round() %>%
-  {aantal_gbm_overschrijdend - .} %>%
-  meer_of_minder()
+# verschil_gbm_overschrijdend <-
+#   aantal_stoffen %>%
+#   filter(jaar >= rap_jaar - 3, jaar < rap_jaar, categorie == "Normoverschrijdend") %>%
+#   pull(aantal) %>%
+#   mean() %>%
+#   round() %>%
+#   {aantal_gbm_overschrijdend - .} %>%
+#   meer_of_minder()
 
 stoffen_per_monster <-
   data_gbm %>%
@@ -231,11 +227,12 @@ ind_overschr <-
   summarise(label_tekst_basis = glue_collapse(tekst_enkel, sep = "<br>"))
 
 # Aanpassen voor verschillende categorieen overschrijdingen
-pal <- colorFactor(palette = c(oranje_m, blauw, oranje), 
-                   domain = c("Geen normoverschrijding", "Beperkte normoverschrijding", "Grote normoverschrijding"))
+pal <- colorFactor(palette = c(oranje_m, blauw, oranje, "#752E00"), 
+                   domain = c("Geen normoverschrijding", "Beperkte normoverschrijding (1-10x)", "Grote normoverschrijding (10-100x)", "Zeer grote normoverschrijding (> 100x)"))
 
 mspaf_label <- 
   mspaf_mp %>% 
+  filter(jaar == rap_jaar) %>% 
   select(mp, type, mspaf) %>% 
   mutate(mspaf = percent(mspaf, accuracy = 0.1, decimal.mark = ",")) %>% 
   pivot_wider(names_from = type, values_from = mspaf)
@@ -251,7 +248,7 @@ kaart_overschrijdingen <-
   summarise(normoverschrijding = any(normoverschrijding, na.rm = TRUE),
             sno = sum(hoogste_overschrijding),
             sno_rond = format(signif(sno, digits = 3), decimal.mark = ","),
-            sno_tekst = cut(sno, breaks = c(-1,1, 10, 99999), labels = c("Geen normoverschrijding", "Beperkte normoverschrijding", "Grote normoverschrijding"), ordered_result = TRUE),
+            sno_tekst = cut(sno, breaks = c(-1,1, 10, 100, 99999), labels = c("Geen normoverschrijding", "Beperkte normoverschrijding (1-10x)", "Grote normoverschrijding (10-100x)", "Zeer grote normoverschrijding (> 100x)"), ordered_result = TRUE),
             label_tekst = glue("<b>Meetpunt {first(landgebruik)}:</b> {first(mp)}<br><br>
                                <b>Opgetelde normoverschrijding:</b> {sno_rond} x<br>
                                <b>Acute toxiciteit:</b> {first(`Acute effecten`)}<br>  
@@ -265,7 +262,8 @@ kaart_overschrijdingen <-
   sf::st_transform(crs = 4326) %>% 
   basiskaart() %>% 
   addPolylines(data = ws_grens, opacity = 1, color = "grey", weight = 2, label = "waterschapsgrens") %>%
-  addCircleMarkers(color = ~pal(sno_tekst), stroke = FALSE, fillOpacity = 1, popup = ~label_tekst, 
+  addCircleMarkers(fillColor = ~pal(sno_tekst), stroke = TRUE, fillOpacity = 1, popup = ~label_tekst, 
+                   opacity = 1, color = "#333333", weight = 1,
                    label = ~glue("De opgetelde normoverschrijding is {sno_rond} x")) %>% 
   addLegend(values = ~sno_tekst, pal = pal, opacity = 1, title = "Normoverschrijdingen") %>% 
   leaflet.extras::addFullscreenControl()
@@ -274,7 +272,9 @@ kaart_overschrijdingen <-
 
 plot_mspaf_mp <-
   mspaf_mp %>%
-  filter(aantal_monsters > 2) %>% # locaties met 2 monsters en 1 pakket eruit alleen in 2023!!!
+  filter(jaar == rap_jaar) %>% 
+  mutate(mp2 = fct_reorder2(mp2, desc(type), mspaf) |> fct_rev()) %>%
+  # filter(aantal_monsters > 2) %>% # locaties met 2 monsters en 1 pakket eruit alleen in 2023!!!
   ggplot() +
   geom_col(aes(mspaf, mp2, fill = landgebruik), colour = "grey60", linewidth = 0.2) +
   geom_vline(xintercept = 0.005, colour = oranje, linetype = "dashed", linewidth = 0.8) + 
@@ -294,59 +294,89 @@ plot_mspaf_mp <-
         panel.spacing = unit(2, "lines"),
         axis.text.y = element_text(hjust = 0))
 
-
-
-plot_mspaf_tijd <-
-  paf %>%
-  filter(jaar >= rap_jaar - 10) %>%
-  group_by(jaar) %>%
-  mutate(n = n(),
-         jaar2 = glue("{jaar}\n\n n = {n}")) %>%
-  ungroup() %>%
-  mutate(mspaf_i = 1 / `Acute effecten`) %>%
-  filter(mspaf_i < 100000) %>%
-  ggplot(aes(jaar2, mspaf_i)) +
-  ggbeeswarm::geom_quasirandom(width = 0.3, colour = "grey30") +
-  scale_y_continuous(trans = c("log10", "reverse"), breaks = breaks_log(n = 8), 
-                     labels = scales::label_number(prefix = "1 op de ", big.mark = ".", accuracy = 1),
-                     sec.axis = sec_axis(trans = ~ 1 / ., name = "msPAF acuut", breaks = breaks_log(n = 8),
-                                         labels = function(x) scales::percent(x, decimal.mark = ",", accuracy = 0.001))) +
-  # scale_x_continuous(breaks = scales::pretty_breaks(n = 14)) +
-  geom_hline(yintercept = c(10, 200), colour = oranje, linetype = c(1,2)) +
+plot_mspaf_tijd <- 
+  mspaf_mp %>% 
+  filter(type == "Acute effecten") %>% 
+  mutate(mspaf_i = 1 / mspaf) %>% 
+  filter(mspaf_i < 1000) %>% 
+  mutate(landgebruik = fct_reorder(landgebruik, mspaf_i)) %>% 
+  ggplot(aes(jaar,  mspaf)) +
+  geom_hline(yintercept = c(0.10, 0.005), colour = oranje, linetype = rep(c(1,2), times = 4)) +
+  ggbeeswarm::geom_quasirandom(width = 0.15, colour = "grey20") +
+  scale_y_continuous(trans = c("log10"), limits = c(0.001, 0.6), breaks = breaks_log(n =6),
+                     labels = function(x) scales::percent(x, decimal.mark = ",", accuracy = 0.1)) +
+  # scale_y_continuous(trans = c("log10", "reverse"), breaks = breaks_log(n = 6), 
+  #                    labels = scales::label_number(prefix = "1 op de ", big.mark = ".", accuracy = 1),
+  #                    sec.axis = sec_axis(trans = ~ 1 / ., name = "msPAF acuut", breaks = breaks_log(n = 6),
+  #                                        labels = function(x) scales::percent(x, decimal.mark = ",", accuracy = 0.1))) +
+  scale_x_continuous(breaks = scales::pretty_breaks(n = 10), limits = c(rap_jaar - 9.3, rap_jaar), guide = guide_axis(n.dodge = 2)) +
+  facet_wrap(~landgebruik, ncol = 2, scales = "free") +
   labs(title = "Welk deel van de soorten wordt aangetast?",
-       subtitle = "Acute effecten per monster",
+       subtitle = "Acute effecten per locatie",
        x = "",
        y = "Aandeel aangetaste soorten") +
-  hhskthema() +
+  thema_line_facet +
   theme(plot.subtitle = element_text(face = "italic"),
-        axis.text.y = element_text(hjust = 1)) +
+        axis.text.y = element_text(hjust = 1),
+        panel.grid.major.x = element_blank(),
+        axis.ticks.x = element_blank(), 
+        strip.background = element_blank(),
+        panel.spacing = unit(20, "points")
+        
+        ) +
   NULL
 
-plot_mspaf_tijd_chronisch <-
-  paf %>%
-  filter(jaar >= rap_jaar - 10) %>%
-  group_by(jaar) %>%
-  mutate(n = n(),
-         jaar2 = glue("{jaar}\n\n n = {n}")) %>%
-  ungroup() %>%
-  mutate(mspaf_i = 1 / `Chronische effecten`) %>%
-  filter(mspaf_i < 100000) %>%
-  ggplot(aes(jaar2, mspaf_i)) +
-  ggbeeswarm::geom_quasirandom(width = 0.3, colour = "grey30") +
-  scale_y_continuous(trans = c("log10", "reverse"), breaks = breaks_log(n = 8), 
-                     labels = scales::label_number(prefix = "1 op de ", big.mark = ".", accuracy = 1),
-                     sec.axis = sec_axis(trans = ~ 1 / ., name = "msPAF chronisch", breaks = breaks_log(n = 8),
-                                         labels = function(x) scales::percent(x, decimal.mark = ",", accuracy = 0.001))) +
-  # scale_x_continuous(breaks = scales::pretty_breaks(n = 14)) +
-  geom_hline(yintercept = c(20, 200), colour = oranje, linetype = c(1,2)) +
-  labs(title = "Welk deel van de soorten wordt aangetast?",
-       subtitle = "Chronische effecten per monster",
-       x = "",
-       y = "Aandeel aangetaste soorten") +
-  hhskthema() +
-  theme(plot.subtitle = element_text(face = "italic"),
-        axis.text.y = element_text(hjust = 1)) +
-  NULL
+# plot_mspaf_tijd <-
+#   paf %>%
+#   filter(jaar >= rap_jaar - 10) %>%
+#   group_by(jaar) %>%
+#   mutate(n = n(),
+#          jaar2 = glue("{jaar}\n\n n = {n}")) %>%
+#   ungroup() %>%
+#   mutate(mspaf_i = 1 / `Acute effecten`) %>%
+#   filter(mspaf_i < 100000) %>%
+#   ggplot(aes(jaar2, mspaf_i)) +
+#   ggbeeswarm::geom_quasirandom(width = 0.3, colour = "grey30") +
+#   scale_y_continuous(trans = c("log10", "reverse"), breaks = breaks_log(n = 8), 
+#                      labels = scales::label_number(prefix = "1 op de ", big.mark = ".", accuracy = 1),
+#                      sec.axis = sec_axis(trans = ~ 1 / ., name = "msPAF acuut", breaks = breaks_log(n = 8),
+#                                          labels = function(x) scales::percent(x, decimal.mark = ",", accuracy = 0.001))) +
+#   # scale_x_continuous(breaks = scales::pretty_breaks(n = 14)) +
+#   geom_hline(yintercept = c(10, 200), colour = oranje, linetype = c(1,2)) +
+#   labs(title = "Welk deel van de soorten wordt aangetast?",
+#        subtitle = "Acute effecten per monster",
+#        x = "",
+#        y = "Aandeel aangetaste soorten") +
+#   hhskthema() +
+#   theme(plot.subtitle = element_text(face = "italic"),
+#         axis.text.y = element_text(hjust = 1)) +
+#   NULL
+
+# plot_mspaf_tijd_chronisch <-
+#   paf %>%
+#   filter(jaar >= rap_jaar - 10) %>%
+#   group_by(jaar) %>%
+#   mutate(n = n(),
+#          jaar2 = glue("{jaar}\n\n n = {n}")) %>%
+#   ungroup() %>%
+#   mutate(mspaf_i = 1 / `Chronische effecten`) %>%
+#   filter(mspaf_i < 100000) %>%
+#   ggplot(aes(jaar2, mspaf_i)) +
+#   ggbeeswarm::geom_quasirandom(width = 0.3, colour = "grey30") +
+#   scale_y_continuous(trans = c("log10", "reverse"), breaks = breaks_log(n = 8), 
+#                      labels = scales::label_number(prefix = "1 op de ", big.mark = ".", accuracy = 1),
+#                      sec.axis = sec_axis(trans = ~ 1 / ., name = "msPAF chronisch", breaks = breaks_log(n = 8),
+#                                          labels = function(x) scales::percent(x, decimal.mark = ",", accuracy = 0.001))) +
+#   # scale_x_continuous(breaks = scales::pretty_breaks(n = 14)) +
+#   geom_hline(yintercept = c(20, 200), colour = oranje, linetype = c(1,2)) +
+#   labs(title = "Welk deel van de soorten wordt aangetast?",
+#        subtitle = "Chronische effecten per monster",
+#        x = "",
+#        y = "Aandeel aangetaste soorten") +
+#   hhskthema() +
+#   theme(plot.subtitle = element_text(face = "italic"),
+#         axis.text.y = element_text(hjust = 1)) +
+#   NULL
 
 # % van alle toetsingen ---------------------------------------------------
 
@@ -381,18 +411,26 @@ plot_overschr_freq <-
 
 # Niet toetsbare stoffen -----------------------------------------
 
+f_par_werking <-
+  readRDS("data/gbm_toelating_werking.rds") %>% 
+  select(parnr, werking) %>% 
+  maak_opzoeker()
+
+
 tabel_niet_toetsbaar <-
   data_gbm %>%
   anti_join(normen, by = "parnr") %>%
   filter(jaar == rap_jaar) %>%
   mutate(Naam = str_to_sentence(f_parnaam(parnr))) %>% 
-  filter(sum(is.na(detectiegrens)) > 0, .by = Naam) %>% 
+  # mutate(`Soort stof` = f_par_werking(parnr)) %>% 
+  filter(any(is.na(detectiegrens)), .by = Naam) %>% 
   summarise(n = n(),
             n_aanwezig = sum(is.na(detectiegrens)),
             `Aantal keer aangetroffen` = glue("{n_aanwezig} ({percent(n_aanwezig / n)})"),
-            .by = Naam) %>% 
+            .by = c(Naam)) %>% 
   select(-n, -n_aanwezig) %>% 
-  bind_cols(tibble(`Soort stof` = c("Fungicide", rep("Insecticide", 3)))) %>% #, Bijzonderheden = c("", "Giftig voor bijen", "Afbraak product van tolylfluanide"))) %>%
+  
+  bind_cols(tibble(`Soort stof` = c("Fungicide (metaboliet)", rep("Insecticide", 3)))) %>% #, Bijzonderheden = c("", "Giftig voor bijen", "Afbraak product van tolylfluanide"))) %>%
   knitr::kable(align = "lrl")
 
 
