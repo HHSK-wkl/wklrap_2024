@@ -2,7 +2,7 @@
 lightbox: auto
 ---
 
-# Waterkwaliteitsonderzoek {#sec-meetnetten}
+# Wat meet het waterschap? {#sec-meetnetten}
 
 ::: samenvatting
 |                                          |       |
@@ -26,32 +26,34 @@ lightbox: auto
 
 ### Introductie {.unnumbered}
 
-De informatie in deze jaarlijkse waterkwaliteitsrapportage is voornamelijk afkomstig van de diverse meetnetten die het waterschappen heeft. In dit hoofdstuk vind je informatie over welke metingen zijn gedaan en welke meetnetten het waterschap heeft.
+De informatie in deze jaarlijkse waterkwaliteitsrapportage is voornamelijk afkomstig van de diverse meetnetten die het waterschappen heeft. In dit hoofdstuk vind je informatie over de metingen die zijn gedaan en welke meetnetten het waterschap heeft.
 
 Waterkwaliteitsonderzoek kun je verdelen in twee groepen: onderzoek naar de samenstelling van het water (chemisch) en onderzoek naar wat er in en langs het water leeft (biologie). Voor het chemische onderzoek wordt het water periodiek bemonsterd. Deze watermonsters worden in het laboratorium onderzocht. Hierbij weten we van te voren welke stoffen we gaan meten. Bij biologisch onderzoek gaat er iemand naar een bepaalde plek om te kijken welke soorten van een bepaalde groep aanwezig zijn. Daarbij weet je niet van te voren welke soorten er worden gevonden.
 
 Voor het waterkwaliteitsonderzoek maakt het waterschap gebruik van verschillende meetnetten. Een meetnet bestaat uit een aantal onderzoekslocaties die periodiek worden onderzocht. Ieder meetnet heeft een specifiek doel. De frequentie en het soort metingen is aangepast op het doel van het meetnet
 
-### Wat meet het waterschap? {.unnumbered}
+### Samenstelling van het water {.unnumbered}
 
-#### Samenstelling van het water {.unnumbered}
+De samenstelling van het water is in {{< var rap_jaar >}} op **`r blauwe_tekst(n_locs_fc, 20)`** verschillende locaties onderzocht. Daarvoor zijn **`r blauwe_tekst(n_monsters_fc, 20)`** monsters genomen. In totaal is er onderzoek gaan naar **`r blauwe_tekst(n_parameters_fc, 20)`** verschillende stoffen en kenmerken van het water.
 
-De samenstelling van het water is in {{< rap_jaar >}} op **`r blauwe_tekst(n_locs_fc, 20)`** verschillende locaties onderzocht. Daarvoor zijn **`r blauwe_tekst(n_monsters_fc, 20)`** monsters genomen. In totaal is er onderzoek gaan naar **`r blauwe_tekst(n_parameters_fc, 20)`** verschillende stoffen en kenmerken van het water.
+In de onderstaande tabel is van elke stof(groep) in detail terug te vinden hoeveel metingen er zijn gedaan en op hoeveel verschillende locaties.
 
 ::: column-body-outset
 ```{r}
 #| label: tabel-chemie
-#| tbl-cap: "Aantal chemische metingen en meetlocaties in {{< rap_jaar >}}. (interactief)"
+#| fig-cap: "Aantal chemische metingen en meetlocaties in {{< var rap_jaar >}}. (interactief)"
 
 tabel_chemie_metingen
 ```
 :::
 
-#### Wat leeft er in het water {.unnumbered}
+### Wat leeft er in het water? {.unnumbered}
 
-TESKT
+Wat er leeft in en om het water is in {{< var vorig_jaar >}}[^06-meetnetten-1] op **`r blauwe_tekst(n_locs_bio, 20)`** verschillende locaties onderzocht. Bij het onderzoek zijn **`r blauwe_tekst(n_waarnemingen_bio, 20)`** waarnemingen gedaan van in totaal **`r blauwe_tekst(n_soorten_bio, 20)`** verschillende soorten planten en dieren.
 
-::: column-page-inset
+[^06-meetnetten-1]: De biologische gegevens van {{< var rap_jaar >}} zijn nog niet allemaal beschikbaar. Daarom wordt er een overzicht gegeven van {{< var vorig_jaar >}}.
+
+::: column-body-outset
 ```{r}
 #| label: tabel-biologie
 
@@ -61,46 +63,44 @@ tabel_bio_waarnemingen
 
 ### Meetnetten {.unnumbered}
 
-Het doel van het basismeetnet is om de waterkwaliteit van de belangrijkste wateren te kunnen volgen en bewaken. De meetlocaties van het basismeetnet liggen daarom in de boezems,in de grotere plassen en op plekken waar water ingelaten of uitgepompt wordt. Op de locaties van het basismeetnet wordt ieder jaar elke maand een monster genomen. Voor het basismeetnet worden vooral algemene kenmerken en natuurlijk voorkomende chemische stoffen gemeten. In de grote plassen en boezems wordt ook de hoeveelheid algen gemeten.
+Voor het onderzoek naar de waterkwaliteit heeft het waterschap verschillende meetnetten. Op de onderstaande kaart zijn van een aantal van de belangrijkste meetnetten de locaties weergegeven. 
 
-**Aantal meetlocaties `r n_locs_meetnet("basis")`**\
-**Meetfrequentie: jaarlijks - iedere maand**\
-**Wat wordt gemeten**
+Onder de kaart wordt bij elk meetnet een korte toelichting gegeven.
 
-::: {layout-ncol="3"}
-::: {#basis1}
--   Geleidendheid
--   Zuurstof
--   Doorzicht
--   Zuurgraad (pH)
--   Temperatuur
--   Kroosbedekking
-:::
-
-::: {#basis2}
--   Chloride
--   Ortho-fosfaat
--   Totaal fosfaat
--   Ammonium
--   Nitraat
--   Nitriet
-:::
-
-::: {#basis3}
--   Totaal stikstof
--   Sulfaat
--   Waterstofcarbonaat
--   Chlorofyl-a (algen)
--   Onopgeloste stoffen
-:::
-:::
-
-Aantal meetlocaties - meetfrequentie - meetpakket (welke stoffen)
-
+::: column-body-outset
 ```{r}
-#| eval: false
-#| label: meetnet-basis
+#| label: kaart-meetnetten
+#| fig-height: 6
 #| out-width: "100%"
-#| fig-cap: "De locaties van het het basismeetnet"
-meetnet_basis
+#| fig-cap: "Kaart met de locaties van de belangrijkste meetnetten (interactief). De kleur geeft aan wanneer de locatie gemeten wordt. Klik op een meetpunt voor meer informatie"
+kaart_meetnetten
 ```
+:::
+
+#### Basis meetnet {.unnumbered}
+
+Het doel van het basis meetnet is om de waterkwaliteit van de belangrijkste wateren te kunnen volgen en bewaken. De meetlocaties (55) van het basis meetnet liggen daarom in de boezems,in de grotere plassen en op plekken waar water ingelaten of uitgepompt wordt. Op de locaties van het basismeetnet wordt ieder jaar elke maand een monster genomen. Voor het basis meetnet worden vooral algemene kenmerken en natuurlijk voorkomende chemische stoffen gemeten. In de grote plassen en boezems wordt ook de hoeveelheid algen gemeten.
+
+#### Roulerend meetnet {.unnumbered}
+
+Het doel van het roulerende meetnet is om een algemeen beeld te krijgen van de waterkwaliteit in het gebied. De meetlocaties (186) liggen willekeurig verspreid over het gebied. Wel is er rekening mee gehouden dat er elk soort landgebruik voldoende meetpunten zijn. De meetpunten van het roulerende meetnet worden eens per 3 jaar, maandelijks gemeten. Voor het roulerende meetnet worden vooral algemene kenmerken en natuurlijk voorkomende chemische stoffen gemeten. In de plassen wordt ook de hoeveelheid algen gemeten.
+
+#### Meetnet zwemwater {.unnumbered}
+
+In het meetnet zwemwater wordt er onderzoek gedaan op de officiële zwemlocaties (8). Dit meetnet is speciaal bedoeld om te onderzoeken of de waterkwaliteit gezondheidsrisico's geeft voor zwemmers.  Het water wordt onderzocht op de aanwezigheid van poepbacteriën en blauwalgen.  Vanaf mei tot en met september wordt er elke twee weken een monster genomen. Als er een gezondheidsrisico is dan wordt het water zelfs elke week bemonsterd. Zie voor meer informatie ook [hoofdstuk @sec-zwemwater].
+
+#### Meetnet bestrijdingsmiddelen {.unnumbered}
+
+Het meetnet bestrijdingsmiddelen is bedoeld om inzicht te krijgen of en welke bestrijdingsmiddelen aanwezig zijn. Er wordt onderzoek gedaan naar ruim 250 verschillende bestrijdingsmiddelen. De bestrijdingsmiddelen zijn vooral afkomstig uit de landbouw waar ze voor gewasbescherming worden gebruikt. De meetlocaties (10) liggen vooral op plekken waar het aannemelijk is dat er bestrijdingsmiddelen aanwezig kunnen zijn. Onderzoek naar bestrijdingsmiddelen gebeurt 4 tot 6 keer per jaar. De bestrijdingsmiddelen worden getoetst aan normen en ook de giftigheid wordt beoordeeld. Zie voor meer informatie ook [hoofdstuk @sec-gbm].
+
+#### Meetnet KRW biologie  {.unnumbered}
+
+Het meetnet KRW biologie heeft als doel om de biologische toestand van de KRW-waterlichamen te kunnen beoordelen. Ieder waterlichaam wordt eens per 3 jaar onderzocht. Er wordt dan onderzocht welke soorten algen, waterplanten, waterdiertjes, en vissen er voorkomen. Ook de hoeveelheid van iedere soort wordt bepaald. Zie voor meer informatie ook [hoofdstuk @sec-krw]. 
+
+#### Meetnet waterplanten  {.unnumbered}
+
+Waterplanten zijn erg bepalend voor de toestand van het onderwaterleven. Daarom is er een speciaal meetnet waarmee in het hele gebied onderzoek gedaan wordt naar waterplanten. De locaties (436) van dit meetnet worden eens per 3 jaar onderzocht.
+
+#### Meetnet kreeften  {.unnumbered}
+
+De Amerikaanse rivierkreeften hebben grote invloed op het onderwaterleven in het gebied van het waterschap. Daarom is er sinds 2020 een meetnet opgezet om de hoeveelheid en de verspreiding van de kreeften te kunnen volgen. De locaties van dit meetnet zijn gelijk aan de locaties van het meetnet voor waterplanten. Daardoor kan ook de relatie worden gelegd tussen de aanwezigheid van kreeften en de waterplanten. De resultaten van dit meetnet worden jaarlijks gepubliceerd in een [ rapportage](https://www.schielandendekrimpenerwaard.nl/kaart/waterkwaliteit/waterkwaliteitsrapportages/kreeften_2024/){target="_blank"}.

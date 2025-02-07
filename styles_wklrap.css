@@ -31,13 +31,9 @@ EDITS JT
 
 .leaflet-label{
   border-width:1px;
-  border-color:#0079c2; /*HHSK blauw*/
 }
 
-.leaflet-control-layers{
-  color:#0079c2; /*HHSK blauw*/
-  font-family:Verdana,"Helvetica Neue",Helvetica,Arial,sans-serif;
-}
+
 
 .samenvatting{
   font-size: 1.1em;
@@ -66,3 +62,4 @@ EDITS JT
 .quarto-figure .leaflet{
   text-align: left;
 }
+
