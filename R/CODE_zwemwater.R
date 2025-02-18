@@ -66,8 +66,9 @@ zwem_legend <- paste0("<b>Oordeel</b></br>",
                       "<img src='images/icon_zwemwater_blauw.png' height='30' width = '30'> Uitstekend<br/>",
                       "<img src='images/icon_zwemwater_groen.png' height='30' width = '30'> Goed<br/>",
                       "<img src='images/icon_zwemwater_oranje.png' height='30' width = '30'> Aanvaardbaar<br/>",
-                      "<img src='images/icon_zwemwater_rood.png' height='30' width = '30'> Slecht<br>",
-                      "<img src='images/icon_zwemwater_grijs.png' height='30' width = '30'> Geen oordeel")
+                      "<img src='images/icon_zwemwater_rood.png' height='30' width = '30'> Slecht<br>"
+                      # "<img src='images/icon_zwemwater_grijs.png' height='30' width = '30'> Geen oordeel"
+                      )
 
 
 kaart_zwemlocaties <-
