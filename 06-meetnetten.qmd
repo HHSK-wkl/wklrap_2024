@@ -4,19 +4,6 @@ lightbox: auto
 
 # Wat meet het waterschap? {#sec-meetnetten}
 
-::: samenvatting
-|                                          |       |
-|------------------------------------------|-------|
-| [{{< fa circle-exclamation >}}]{.oranje} | tekst |
-| [{{< fa circle-exclamation >}}]{.oranje} | tekst |
-
-::: aside
-![](images%5Cvince_talk2_rev.svg){.nolightbox fig-align="center" width="200" fig-alt="Pictogram van een pratende vis"}
-:::
-:::
-
-------------------------------------------------------------------------
-
 ```{r}
 #| label: code-meetnetten
 #| file: "R/CODE_meetnetten.R"
@@ -24,17 +11,33 @@ lightbox: auto
 #| cache: false
 ```
 
+::: samenvatting
+|                                          |       |
+|---|---------------------------------------------------------|
+| [{{< fa circle-info >}}]{.blauw} | In 2024 zijn er **`r n_metingen_fc`** chemische metingen uitgevoerd.  |
+| [{{< fa circle-info >}}]{.blauw} | Bij het onderzoek zijn er **`r n_soorten_bio`** verschillende soorten planten en dieren waargenomen. |
+
+
+:::
+
+------------------------------------------------------------------------
+
+
 ### Introductie {.unnumbered}
 
-De informatie in deze jaarlijkse waterkwaliteitsrapportage is voornamelijk afkomstig van de diverse meetnetten die het waterschappen heeft. In dit hoofdstuk vind je informatie over de metingen die zijn gedaan en welke meetnetten het waterschap heeft.
+::: aside
+![](images%5Cvince_talk2_rev.svg){.nolightbox fig-align="center" width="200" fig-alt="Pictogram van een pratende vis"}
+:::
 
-Waterkwaliteitsonderzoek kun je verdelen in twee groepen: onderzoek naar de samenstelling van het water (chemisch) en onderzoek naar wat er in en langs het water leeft (biologie). Voor het chemische onderzoek wordt het water periodiek bemonsterd. Deze watermonsters worden in het laboratorium onderzocht. Hierbij weten we van te voren welke stoffen we gaan meten. Bij biologisch onderzoek gaat er iemand naar een bepaalde plek om te kijken welke soorten van een bepaalde groep aanwezig zijn. Daarbij weet je niet van te voren welke soorten er worden gevonden.
+Om deze rapportage te maken zijn er veel metingen nodig. Die metingen zijn afkomstig van de meetnetten die het waterschap heeft. In dit hoofdstuk vind je informatie over de metingen die het waterschap doet en welke meetnetten het waterschap heeft.
+
+De metingen van waterkwaliteit kun je verdelen in twee groepen: onderzoek naar de samenstelling van het water (chemisch), en onderzoek naar wat er in en langs het water leeft (biologie). Voor het chemische onderzoek wordt het water periodiek bemonsterd. Deze watermonsters worden in het laboratorium onderzocht. Hierbij weten we van te voren welke stoffen we gaan meten. Bij biologisch onderzoek gaat er iemand naar een bepaalde plek om te kijken welke soorten van een bepaalde groep aanwezig zijn. Daarbij weet je niet van te voren welke soorten er worden gevonden.
 
 Voor het waterkwaliteitsonderzoek maakt het waterschap gebruik van verschillende meetnetten. Een meetnet bestaat uit een aantal onderzoekslocaties die periodiek worden onderzocht. Ieder meetnet heeft een specifiek doel. De frequentie en het soort metingen is aangepast op het doel van het meetnet
 
 ### Samenstelling van het water {.unnumbered}
 
-De samenstelling van het water is in {{< var rap_jaar >}} op **`r blauwe_tekst(n_locs_fc, 20)`** verschillende locaties onderzocht. Daarvoor zijn **`r blauwe_tekst(n_monsters_fc, 20)`** monsters genomen. In totaal is er onderzoek gaan naar **`r blauwe_tekst(n_parameters_fc, 20)`** verschillende stoffen en kenmerken van het water.
+De samenstelling van het water is in {{< var rap_jaar >}} op **`r blauwe_tekst(n_locs_fc, 20)`** verschillende locaties onderzocht. Daarvoor zijn **`r blauwe_tekst(n_monsters_fc, 20)`** monsters genomen. In totaal zijn er **`r blauwe_tekst(n_metingen_fc, 20)`** metingen gedaan van **`r blauwe_tekst(n_parameters_fc, 20)`** verschillende stoffen en kenmerken van het water.
 
 In de onderstaande tabel is van elke stof(groep) in detail terug te vinden hoeveel metingen er zijn gedaan en op hoeveel verschillende locaties.
 
@@ -53,9 +56,13 @@ Wat er leeft in en om het water is in {{< var vorig_jaar >}}[^06-meetnetten-1] o
 
 [^06-meetnetten-1]: De biologische gegevens van {{< var rap_jaar >}} zijn nog niet allemaal beschikbaar. Daarom wordt er een overzicht gegeven van {{< var vorig_jaar >}}.
 
+In de onderstaande tabel is van elke soort(groep) in detail terug te vinden hoe vaak er waarnemingen zijn gedaan en op hoeveel verschillende locaties.
+
+
 ::: column-body-outset
 ```{r}
 #| label: tabel-biologie
+#| fig-cap: "Aantal biologische soortwaarnemingen en meetlocaties in {{< var vorig_jaar >}}. (interactief)"
 
 tabel_bio_waarnemingen
 ```
