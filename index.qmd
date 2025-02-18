@@ -10,10 +10,7 @@ lightbox: false
 
 # Inleiding {.unnumbered}
 
-**Koppeling met WBP-doelen**
-
-
-*Wat is de waterkwaliteit in het gebied van het waterschap?* Dat is een vraag met veel mogelijke antwoorden. Deze waterkwaliteitsrapportage geeft een inkijkje in de hoe de waterkwaliteit ervoor staat.
+"Wat is de waterkwaliteit in het gebied van het waterschap?" Dat is een vraag met veel mogelijke antwoorden. Deze waterkwaliteitsrapportage geeft een inkijkje in hoe de waterkwaliteit ervoor staat.
 
 De waterkwaliteit heeft te maken met de planten en dieren die in het water leven. Een goede waterkwaliteit betekent dat er allerlei verschillende planten en dieren voorkomen die hier van nature thuis horen. 
 Waterkwaliteit heeft ook te maken met de chemische stoffen in het water. Sommige van die stoffen komen van nature voor in het water en andere juist niet. Een goede waterkwaliteit betekent zo min mogelijk onnatuurlijke stoffen in het water; de hoeveelheid natuurlijke stoffen moet passen bij de aard van het gebied.
@@ -44,12 +41,13 @@ De voedingsstoffen *fosfaat en stikstof* bepalen hoe snel waterplanten, kroos en
 [Hoofdstuk @sec-gbm]\
 *Gewasbeschermingsmiddelen of bestrijdingsmiddelen* worden in de landbouw gebruikt om gewassen te beschermen tegen ziektes en insecten. Deze stoffen kunnen schadelijk zijn voor het onderwaterleven. In dit hoofdstuk is te lezen dat er veel (54) bestrijdingsmiddelen in het water aanwezig zijn en dat 14 van deze stoffen de norm overschrijden. Met name in het glastuinbouwgebied zorgen deze stoffen voor schade aan het onderwaterleven.
 
-[Hoofdstuk @{#sec-meetnetten}]\
-Iets over hoofdstuk meetnetten
 
 ### En verder
 
-Er is veel meer informatie over waterkwaliteit dan in deze rapportage opgenomen kan worden. In het [hoofdstuk Meer informatie](#meer_info) zijn een aantal verwijzingen opgenomen naar bronnen met meer gegevens en informatie over waterkwaliteit.
+[Hoofdstuk @sec-meetnetten]\
+Om de waterkwaliteitsrapportage te maken moet er veel worden gemeten. Dit hoofdstuk geeft meer inzicht in de metingen die het waterschap uitvoert.
+
+Er is veel meer informatie over waterkwaliteit dan in deze rapportage opgenomen kan worden. In het hoofdstuk[Meer informatie](#meer_info) zijn een aantal verwijzingen opgenomen naar bronnen met meer gegevens en informatie over waterkwaliteit.
 
 Deze rapportage is voor een belangrijk deel automatisch opgebouwd uit data en computercode. De data en code zijn beschikbaar via [Github - Waterkwaliteitsrapportage 2024](https://github.com/HHSK-wkl/wklrap_2024).
 
