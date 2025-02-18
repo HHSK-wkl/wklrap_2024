@@ -17,14 +17,16 @@ description: "Rapportage waterkwaliteit van waterschap Hoogheemraadschap van Sch
 | [{{< fa circle-exclamation >}}]{.oranje} | Amerikaanse rivierkreeften hebben de hele Krimpenerwaard en veel plekken in Schieland gekoloniseerd. |
 | [{{< fa circle-exclamation >}}]{.oranje} | Blauwalgen komen op veel plekken voor en leiden soms tot overlast.                                   |
 
-::: aside
-![](images/vince_sad2.svg){.nolightbox fig-align="center" width="200" fig-alt="Pictogram van een verdrietig kijkende vis"}
-:::
+
 :::
 
 ------------------------------------------------------------------------
 
 ### Waterkwaliteit is zichtbaar {.unnumbered}
+
+::: aside
+![](images/vince_sad2.svg){.nolightbox fig-align="center" width="200" fig-alt="Pictogram van een verdrietig kijkende vis"}
+:::
 
 Als je goed naar het water kijkt, dan kun je daarmee een eerste indruk krijgen van de waterkwaliteit. Is het water helder en groeien er waterplanten? Of is het water juist heel troebel of ligt er een dikke laag kroos op het water? Dat zegt allemaal iets over de waterkwaliteit. Een goede waterkwaliteit kun je vaak herkennen doordat het water dan helder is en er onder water planten groeien.
 
@@ -32,7 +34,7 @@ In dit hoofdstuk wordt de toestand van de waterkwaliteit beschreven aan de hand 
 
 ### Waterplanten {.unnumbered}
 
-Waterplanten hebben een sleutelrol in het onderwaterleven (ecosysteem). Ze zorgen voor de productie van zuurstof en vormen het voedsel en leefgebied voor vissen en andere waterdieren. Door deze sleutelrol geven waterplanten een goede indicatie van de waterkwaliteit en de toestand van het leven onder water. De meeste planten hebben een positieve rol in het ecosysteem. Er zijn echter ook soorten, zoals kroos, die kunnen zorgen voor problemen.
+Waterplanten hebben een sleutelrol in het onderwaterleven (ecosysteem). Waterplanten zorgen voor de productie van zuurstof en vormen het voedsel en leefgebied voor vissen en andere waterdieren. Door deze sleutelrol geven waterplanten een goede indicatie van de waterkwaliteit en de toestand van het leven onder water. De meeste planten hebben een positieve rol in het ecosysteem. Er zijn echter ook soorten, zoals kroos, die kunnen zorgen voor problemen.
 
 In de Krimpenerwaard is het aantal locaties met planten onder water[^01-zichtbare-toestand-1] sterk afgenomen. Vooral in de laatste zeven jaar is een sterke afname te zien. Het is aannemelijk dat de afname van waterplanten komt door de opkomst van Amerikaanse rivierkreeften.
 

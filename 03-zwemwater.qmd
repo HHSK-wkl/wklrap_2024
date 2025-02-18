@@ -21,14 +21,16 @@ description: "Rapportage waterkwaliteit van waterschap Hoogheemraadschap van Sch
 | [{{< fa circle-exclamation >}}]{.oranje} | Op twee zwemlocaties hadden mensen in 2024 last van jeukklachten.                                                                                                                       |
 | [{{< fa circle-exclamation >}}]{.oranje} | Er is één zwemlocatie met een hoge concentratie PFAS: het Kralings Zwembad. Hier geldt een negatief zwemadvies.                                                                                               |
 
-::: aside
-![](images%5Cvince_neutral2.svg){.nolightbox fig-align="center" width="200" fig-alt="Pictogram van een neutraal kijkende vis"}
-:::
+
 :::
 
 ------------------------------------------------------------------------
 
 ### Introductie {.unnumbered}
+
+::: aside
+![](images%5Cvince_neutral2.svg){.nolightbox fig-align="center" width="200" fig-alt="Pictogram van een neutraal kijkende vis"}
+:::
 
 Zwemmen is een belangrijke recreatieve functie van oppervlaktewater. In het gebied van het waterschap zijn acht plekken door de provincie aangewezen als officiële locatie om te zwemmen. Om veilig te kunnen zwemmen is het belangrijk dat de kwaliteit van het zwemwater goed is. De kwaliteit van het zwemwater wordt onderzocht door het waterschap.
 
