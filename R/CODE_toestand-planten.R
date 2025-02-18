@@ -156,7 +156,7 @@ kaart_kreeften <-
   left_join(meetpunten) %>%
   sf::st_as_sf(coords = c("x", "y"), crs = 28992) %>%
   st_transform(crs = 4326) %>%
-  basiskaart() %>%
+  basiskaart(type = "cartolight") %>%
   addPolylines(data = ws_grens, color = "#616161", weight = 3, label = ~"waterschapsgrens") %>%
   addCircleMarkers(fillColor = ~pal(aantal > 0), fillOpacity = 1, radius = 8, 
                    color = "#616161", opacity = 1, weight = 1, 
@@ -180,7 +180,7 @@ kaart_blauwalgen <-
   left_join(meetpunten) %>% 
   sf::st_as_sf(coords = c("x", "y"), crs = 28992) %>%
   st_transform(crs = 4326) %>%
-  basiskaart() %>% 
+  basiskaart(type = "cartolight") %>% 
   addPolylines(data = ws_grens, color = "#616161", weight = 3, label = ~"waterschapsgrens") %>%
   addCircleMarkers(fillColor = ~pal(klasse), fillOpacity = 1, radius = 8, 
                    color = "#616161", opacity = 1, weight = 1, label = ~klasse) %>% 

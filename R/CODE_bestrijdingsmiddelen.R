@@ -260,7 +260,7 @@ kaart_overschrijdingen <-
   left_join(select(meetpunten, mp ,x,y)) %>% 
   sf::st_as_sf(coords = c("x", "y"), crs = 28992) %>% 
   sf::st_transform(crs = 4326) %>% 
-  basiskaart() %>% 
+  basiskaart(type = "cartolight") %>% 
   addPolylines(data = ws_grens, opacity = 1, color = "grey", weight = 2, label = "waterschapsgrens") %>%
   addCircleMarkers(fillColor = ~pal(sno_tekst), stroke = TRUE, fillOpacity = 1, popup = ~label_tekst, 
                    opacity = 1, color = "#333333", weight = 1,

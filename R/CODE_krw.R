@@ -167,7 +167,7 @@ nieuwste_bestand <- function(pattern, pad = "data"){
 kaart_overig <-
   st_read("data/overig_water_kaart.gpkg") %>%
   st_transform(crs = 4326) %>%
-  basiskaart() %>%
+  basiskaart(type = "cartolight") %>%
   addPolylines(data = ws_grens, opacity = 1, color = "grey", weight = 2, label = "waterschapsgrens") %>%
   addPolygons(color = ~f_kleur_ov(naam_ovw), fillOpacity = 0.7, stroke = 0, label = ~naam_ovw, popup = ~naam_ovw) %>%
   addLegend(position = "topright", pal = f_kleur_ov, values = ~naam_ovw, opacity = 0.7, title = "Overig water") %>% 
