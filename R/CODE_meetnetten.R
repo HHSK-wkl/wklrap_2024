@@ -4,6 +4,7 @@ library(sf)
 library(leaflet)
 library(reactable)
 library(glue)
+library(twn)
 
 rap_jaar <- 2024
 
@@ -38,6 +39,8 @@ n_locs_fc <-
   fys_chem_sel %>% summarise(n = n_distinct(mp)) %>% pull(n)
 
 n_monsters_fc <- fys_chem_sel %>% summarise(n = n_distinct(mp, datum)) %>% pull(n)
+
+n_metingen_fc <- fys_chem_sel %>% summarise(n = n_distinct(mp, datum, parnr)) %>% pull(n)
 
 n_parameters_fc <- fys_chem_sel %>% summarise(n = n_distinct(parnr)) %>% pull(n)
 
@@ -88,7 +91,9 @@ n_locs_bio <- bio_sel %>% summarise(n = n_distinct(mp)) %>% pull(n)
 
 n_waarnemingen_bio <- bio_sel %>% summarise(n = n_distinct(mp, datum, naam)) %>% pull(n)
 
-n_soorten_bio <- bio_sel %>% summarise(n = n_distinct(naam)) %>% pull(n)
+n_soorten_bio <- bio_sel %>% 
+  mutate(naam = naam |> twn_voorkeurnaam() |> increase_taxonlevel("Species")) %>% 
+  summarise(n = n_distinct(naam)) %>% pull(n)
   
 
 taxongroepen <- 
