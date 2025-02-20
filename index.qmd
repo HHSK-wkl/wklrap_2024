@@ -31,7 +31,7 @@ Het waterschap werkt, samen met andere partijen, aan de verbetering van de water
 [Hoofdstuk @sec-zwemwater]\
 Zwemmen is een belangrijke recreatieve functie van het water. In dit hoofdstuk is te lezen over de kwaliteit van het zwemwater. De zwemwaterkwaliteit voldoet op officiële zwemlocaties aan de norm uit de Europese zwemwaterrichtlijn. Wel zijn er op diverse locaties af en toe problemen als gevolg van blauwalgen en zwemmersjeuk.
 
-{{< pagebreak >}}
+
 
 ### Stoffen in het water
 

@@ -38,7 +38,7 @@ Voor het waterkwaliteitsonderzoek maakt het waterschap gebruik van verschillende
 
 In dit hoofdstuk wordt eerst een overzicht gegeven van wat er allemaal gemeten wordt in het water. Vervolgens wordt er een overzicht gegeven van de belangrijkste meetnetten.
 
-
+{{< pagebreak >}}
 
 ### Samenstelling van het water {.unnumbered}
 
@@ -56,6 +56,8 @@ In de onderstaande tabel (@tbl-chemie) is van elke stof(groep) in detail terug t
 tabel_chemie_metingen
 ```
 :::
+
+{{< pagebreak >}}
 
 ### Wat leeft er in het water? {.unnumbered}
 
@@ -76,6 +78,8 @@ In de onderstaande tabel (@tbl-biologie) is van elke soort(groep) in detail teru
 tabel_bio_waarnemingen
 ```
 :::
+
+{{< pagebreak >}}
 
 ### Meetnetten {.unnumbered}
 

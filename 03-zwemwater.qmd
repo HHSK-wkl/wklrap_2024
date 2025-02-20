@@ -96,7 +96,7 @@ blauwalgenplot
 Op verschillende zwemlocaties zijn er in de afgelopen jaren maatregelen uitgevoerd om de waterkwaliteit te verbeteren en de hoeveelheid blauwalgen te verminderen: de Bleiswijkse Zoom (2021), de Kralingse Plas (2021) en de Krimpenerhout (2019 en 2024). Op deze locaties zijn in 2024 blauwalgen aangetroffen. Dat wil niet zeggen dat de maatregelen geen effect hebben. De hoeveelheid blauwalgen is op deze zwemlocaties een stuk kleiner dan voor de maatregelen. Dat is ook terug te zien doordat er op deze locaties sinds de maatregelen bijna geen negatieve zwemadviezen meer worden gegeven.
 
 
-{{< pagebreak >}}
+
 
 ### Jeukklachten {.unnumbered}
 
@@ -112,6 +112,8 @@ Op de onderstaande kaart is te zien waar in {{< var rap_jaar >}} gewaarschuwd is
 #| out-width: "100%"
 kaart_jeukklachten
 ```
+
+{{< pagebreak >}}
 
 ### PFAS {.unnumbered}
 
