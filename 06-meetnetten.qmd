@@ -39,11 +39,11 @@ Voor het waterkwaliteitsonderzoek maakt het waterschap gebruik van verschillende
 
 De samenstelling van het water is in {{< var rap_jaar >}} op **`r blauwe_tekst(n_locs_fc, 20)`** verschillende locaties onderzocht. Daarvoor zijn **`r blauwe_tekst(n_monsters_fc, 20)`** monsters genomen. In totaal zijn er **`r blauwe_tekst(n_metingen_fc, 20)`** metingen gedaan van **`r blauwe_tekst(n_parameters_fc, 20)`** verschillende stoffen en kenmerken van het water.
 
-In de onderstaande tabel is van elke stof(groep) in detail terug te vinden hoeveel metingen er zijn gedaan en op hoeveel verschillende locaties.
+In de onderstaande tabel (@tbl-chemie) is van elke stof(groep) in detail terug te vinden hoeveel metingen er zijn gedaan en op hoeveel verschillende locaties.
 
 ::: column-body-outset
 ```{r}
-#| label: tabel-chemie
+#| label: tbl-chemie
 #| fig-cap: "Aantal chemische metingen en meetlocaties in {{< var rap_jaar >}}. (interactief)"
 
 tabel_chemie_metingen
@@ -56,12 +56,12 @@ Wat er leeft in en om het water is in {{< var vorig_jaar >}}[^06-meetnetten-1] o
 
 [^06-meetnetten-1]: De biologische gegevens van {{< var rap_jaar >}} zijn nog niet allemaal beschikbaar. Daarom wordt er een overzicht gegeven van {{< var vorig_jaar >}}.
 
-In de onderstaande tabel is van elke soort(groep) in detail terug te vinden hoe vaak er waarnemingen zijn gedaan en op hoeveel verschillende locaties.
+In de onderstaande tabel (@tbl-biologie) is van elke soort(groep) in detail terug te vinden hoe vaak er waarnemingen zijn gedaan en op hoeveel verschillende locaties.
 
 
 ::: column-body-outset
 ```{r}
-#| label: tabel-biologie
+#| label: tbl-biologie
 #| fig-cap: "Aantal biologische soortwaarnemingen en meetlocaties in {{< var vorig_jaar >}}. (interactief)"
 
 tabel_bio_waarnemingen
@@ -70,13 +70,13 @@ tabel_bio_waarnemingen
 
 ### Meetnetten {.unnumbered}
 
-Voor het onderzoek naar de waterkwaliteit heeft het waterschap verschillende meetnetten. Op de onderstaande kaart zijn van een aantal van de belangrijkste meetnetten de locaties weergegeven. 
+Voor het onderzoek naar de waterkwaliteit heeft het waterschap verschillende meetnetten. Op de kaart (@fig-kaart-meetnetten) zijn van een aantal van de belangrijkste meetnetten de locaties weergegeven. 
 
 Onder de kaart wordt bij elk meetnet een korte toelichting gegeven.
 
 ::: column-body-outset
 ```{r}
-#| label: kaart-meetnetten
+#| label: fig-kaart-meetnetten
 #| fig-height: 6
 #| out-width: "100%"
 #| fig-cap: "Kaart met de locaties van de belangrijkste meetnetten (interactief). De kleur geeft aan wanneer de locatie gemeten wordt. Klik op een meetpunt voor meer informatie"
