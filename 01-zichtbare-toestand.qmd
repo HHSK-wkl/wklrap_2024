@@ -3,7 +3,7 @@ lightbox: auto
 description: "Rapportage waterkwaliteit van waterschap Hoogheemraadschap van Schieland en de Krimpenerwaard (HHSK) 2024. Dit hoofdstuk gaat over de algemene waterkwaliteitstoestand. Het gaat over de hoeveelheid waterplanten en kroos; over de invasieve exoot de Amerikaanse Rivierkreeft en over de aanwezigheid van blauwalgen"
 ---
 
-# Toestand waterkwaliteit {#sec-toestand}
+# Zichtbare waterkwaliteit {#sec-toestand}
 
 ```{r code-toestand-planten, cache = FALSE}
 #| file: "R/CODE_toestand-planten.R"
@@ -106,7 +106,7 @@ Blauwalgen zijn vaak te herkennen aan een intense groene kleur van het water.[^0
 
 [^01-zichtbare-toestand-4]: Ondanks hun naam zijn blauwalgen niet blauw, maar groen. De naam blauwalgen hebben ze gekregen door de blauwe kleurstof die vrijkomt als ze afsterven.
 
-In {{< var rap_jaar >}} zijn er op veel plekken blauwalgen aangetroffen (zie @fig-kaart-blauwalgen). Op een behoorlijk aantal locaties waren er zelfs veel blauwalgen. In @sec-zwemwater is meer te lezen over wat de gevolgen zijn van blauwalgen voor de zwemwaterkwaliteit.
+In {{< var rap_jaar >}} zijn er op veel plekken blauwalgen aangetroffen (zie @fig-kaart-blauwalgen). Op een behoorlijk aantal locaties waren er zelfs veel blauwalgen. In de sloten van de Krimpenerwaard komen op veel plekken veel blauwalgen voor. Dat is vrij ongebruikelijk voor sloten. Waarschijnlijk groeien de blauwalgen hier zo goed doordat er vrijwel geen onderwaterplanten en kroos meer zijn. In @sec-zwemwater is meer te lezen over wat de gevolgen zijn van blauwalgen voor de zwemwaterkwaliteit.
 
 ::: aside
 ![Veel blauwalgen in het water](images/blauwalgen.jpg){group="toestand"}
