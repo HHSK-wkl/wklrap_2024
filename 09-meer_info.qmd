@@ -6,7 +6,7 @@ Deze rapportage geeft een weergave van enkele waterkwaliteitsaspecten op hoofdli
 
 Alle meetgegevens van HHSK zijn te raadplegen en te downloaden via de website. Dit kan in de eerste plaats via de pagina [Actuele metingen waterkwaliteit](https://www.schielandendekrimpenerwaard.nl/actueel/actuele-metingen-waterstanden-en-waterkwaliteit/){target="_blank"}. Hier zijn alle fysisch-chemische en biologische gegevens te downloaden als *.csv-bestanden*. Voor het downloaden van grote hoeveelheden meetgegevens is de beste manier.
 
-Voor het raadplegen van fysisch-chemische meetgegevens is het gebruiksvriendelijker om gebruik te maken van de kaart met [Actuele Metingen](https://www.schielandendekrimpenerwaard.nl/kaart/ActueleMetingen/){target="_blank"}. Via het tabblad *Waterkwaliteit* is zichtbaar op welke locaties waterkwaliteitsmetingen zijn uitgevoerd. Door op een punt te klikken is het mogelijk om meetgegevens in grafiekvorm te bekijken of als .csv-bestand te downloaden.
+Voor het raadplegen van fysisch-chemische meetgegevens is het gebruiksvriendelijker om gebruik te maken van de kaart met [Actuele Metingen](https://experience.arcgis.com/experience/df2ed98c882947af9a50a4af64e7b6c3/page/Waterkwaliteit){target="_blank"}. Via het tabblad *Waterkwaliteit* is zichtbaar op welke locaties waterkwaliteitsmetingen zijn uitgevoerd. Door op een punt te klikken is het mogelijk om meetgegevens in grafiekvorm te bekijken of als .csv-bestand te downloaden.
 
 ### Waterkwaliteitsrapportages {.unnumbered}
 
