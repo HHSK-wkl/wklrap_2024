@@ -5,19 +5,20 @@ library(HHSKwkl)
 library(glue)
 
 doelen <-
-  readxl::read_excel("data/waterlichamen_ekrs_en_doelen_2023.xlsx") %>% 
+  readxl::read_excel("data/waterlichamen_ekrs_en_doelen_2024.xlsx") %>% 
   mutate(naam = ifelse(naam == "'t Weegje", "t Weegje", naam)) %>% 
   select(type, naam, doelen, groep)
 
 
 ekrs <- 
-  read_excel("data/overzicht ekr nieuwe toetsing 2023 v24-7-2023.xlsx") %>% 
+  read_excel("data/overzicht ekr nieuwe toetsing 2024 v02-09-2024.xlsx") %>% 
   pivot_longer(cols = starts_with("20"), names_to = "jaar", values_to = "ekr", values_drop_na = TRUE) %>% 
   rename_all(str_to_lower) %>%
   mutate(jaar = as.numeric(jaar)) %>% 
   arrange(type, nr, naam, jaar) %>% 
   group_by(type, nr, naam) %>% 
-  mutate(ekr3 = slider::slide_dbl(ekr, ~mean(.x), .before = 2)) %>% 
+  mutate(ekr3 = slider::slide_dbl(ekr, ~mean(.x), .before = 2),
+         ekr3_jaren = slider::slide_chr(jaar, ~glue_collapse(.x, sep = " - "), .before = 2)) %>% 
   ungroup() %>% 
   left_join(doelen) %>% 
   mutate(type = fct_relevel(type, c("Algen", "Waterplanten", "Macrofauna", "Vis")),
