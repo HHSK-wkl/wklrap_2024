@@ -3,6 +3,7 @@
 ```{r}
 #| include: false
 gemaakt_op <- format(Sys.time(), '%e %B %Y')
+
 ```
 
 ### Over deze rapportage
